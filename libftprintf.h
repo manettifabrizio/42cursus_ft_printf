@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:10:04 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/03/31 18:13:29 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/03/31 18:25:37 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef	struct		s_lista
 }					t_lista;
 
 int					ft_printf(const char *prt, ...);
-//void				choice(char c, t_lista *g);
+void				choice(char c, t_lista *g);
 
 void				flags(const char *prt, t_lista *g, va_list ap);
 char				*numbersandstar(char *prt, int *x, t_lista *g, va_list ap);

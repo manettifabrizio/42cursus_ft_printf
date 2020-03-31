@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 21:17:38 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/03/31 16:19:26 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/03/31 19:43:35 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void    putblank(t_lista *g)
 {
     if (g->space == 1 && g->minus == 0)
     {
-        printf("a");
+        //printf("a");
         write(1, " ", 1);
         g->width--;
         g->written++;
