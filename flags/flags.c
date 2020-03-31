@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:00:33 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/03/31 19:08:27 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/03/31 20:23:18 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void		check(t_lista *g)
 	if ((g->prec >= 0 && g->conv != 's' && g->conv != 'c' \
  		&& g->conv != 'p' && g->conv != '%' && g->dot == 1) || g->dash == 1)
  		g->zero = 0;
-	if (g->dot == 0 && g->conv == 'f')
+	if (g->conv == 'f' && (g->dot = 0 || g->prec < 0))
 		g->prec = 6;
 }
 
