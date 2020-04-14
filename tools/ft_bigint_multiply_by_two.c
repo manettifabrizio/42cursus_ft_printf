@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 21:51:22 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/13 17:56:17 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/14 13:31:55 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char		*ft_bigint_multiply_by_two(char *output)
 	while (output[len])
 		len++;
 	output[len + 1] = 0;
+	if (ft_strcmp(output, "0") == 0)
+		output[0] = '1';
 	while (len != 0 && is_valid_digit(output[len - 1]))
 	{
 		if (output[len - 1] == '.')

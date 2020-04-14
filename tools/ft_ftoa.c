@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 16:31:56 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/14 11:08:55 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/14 13:32:23 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,5 +148,6 @@ char    *ft_ftoa(double nbr, char *binary, t_lista *g)
 		decimal = infinity_or_nan(decimal, g);
 	else if (exponent != -1022)
 		decimal = final_str(decimal, exponent);
+	//printf("dec = %s\n", decimal);
     return (decimal);
 }

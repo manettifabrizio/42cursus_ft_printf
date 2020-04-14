@@ -1,3 +1,51 @@
-+10.5723457836 --- Return : 14 - FT_PRINTF
-+10.5723457837 --- Return : 14 - PRINTF
-decimal = 1.3215432229567858346541697756038047373294830322265625
+-0   --- Return : 4 - FT_PRINTF
+-16  --- Return : 4 - PRINTF
+decimal = 0
+output = 0
+len = 1
+ret = 0
+1output = 0
+len = 1
+ret = 0
+2output = 0
+len = 1
+ret = 0
+dec = 39294540
+3output = 0
+len = 1
+ret = 0
+dec = 0
+4output = 00
+len = 1
+ret = 0
+dec = 0
+
+5output = 00
+len = 0
+ret = 0
+
+***********************
+output = 
+len = 0
+ret = 0
+5output = 0
+len = 0
+ret = 0
+
+***********************
+output = 
+len = 0
+ret = 0
+5output = 0
+len = 0
+ret = 0
+
+***********************
+output = 
+len = 0
+ret = 0
+5output = 0
+len = 0
+ret = 0
+
+***********************

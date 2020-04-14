@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 16:13:59 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/14 12:48:14 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/14 13:32:41 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ static int      setlength(char *decimal, t_lista *g)
     int length;
 
 	i = 0;
-    while (decimal[i] != '.')
+	f = 0;
+	//printf("dec = %s\n", decimal);
+    while (decimal[i] != '.' && decimal[i])
 		i++;
 	while (decimal[i + f])
 		f++;
@@ -141,18 +143,24 @@ void    wfloat(va_list ap, t_lista *g)
 	long	tmp;
 
     nbr = va_arg(ap, double);
+	//printf("nbr = %lf\n", nbr);
 	binary = doubletobinary(nbr);
+	//printf("bin = %s\n", binary);
 	if (binary[0] == '1')
 		g->minus = 1;
 	decimal = ft_ftoa(nbr, binary, g);
-    length = setlength(decimal, g);
+	//printf("dec = %s\n", decimal);
 	if (ft_strchr(decimal, 'i') == 0 && ft_strchr(decimal, 'n') == 0) //taglio in base alla precisione
 	{
 		tmp = g->prec == -1 ? 6 : g->prec;
 		decimal = ft_bigint_round(decimal, g->prec);
 		//decimal = deal_with_particular_cases(decimal, g);
 	}
+	//printf("dec = %s\n", decimal);
+	length = setlength(decimal, g);
 	if (g->minus == 1 || g->plus == 1 || g->hashtag == 1)
 		g->width--;
 	wfloat1(decimal, g, length);
+	ft_memdel((void **)&binary);
+	ft_memdel((void **)&decimal);
 }

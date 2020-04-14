@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 21:17:38 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/14 12:48:23 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/14 13:33:01 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,10 @@ void    putfloat(char *dec, int length, t_lista *g)
     int f;
 
     i = 0;
+    //printf("len = %d\n", length);
     while (i <= length && dec[i])
     {
+        //printf("dec[%d] = %c\n", i, dec[i]);
         ft_putchar(dec[i]);
         i++;
         g->written++;
