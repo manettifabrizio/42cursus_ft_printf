@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:00:33 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/03/31 20:23:18 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/14 12:32:52 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void		check(t_lista *g)
 	if ((g->prec >= 0 && g->conv != 's' && g->conv != 'c' \
  		&& g->conv != 'p' && g->conv != '%' && g->dot == 1) || g->dash == 1)
  		g->zero = 0;
-	if (g->conv == 'f' && (g->dot = 0 || g->prec < 0))
+	if (g->conv == 'f' && (g->dot == 0 || g->prec < 0))
 		g->prec = 6;
 }
 
@@ -71,7 +71,7 @@ void			flags(const char *prt, t_lista *g, va_list ap)
 	while (prt[x] != '%')
 		x++;
 	x++;
-	// printf("\n****************************************************\n");
 	charactersflags(str, x, g, ap);
 	check(g);
+	//printf("dash = %d\nplus = %d\nspace = %d\nzero = %d\nhashtag = %d\nwidth = %d\ndot = %d\nprec = %d\nminus = %d\nconv = %c\n", g->dash, g->plus, g->space, g->zero, g->hashtag, g->width, g->dot, g->prec, g->minus, g->conv);
 }

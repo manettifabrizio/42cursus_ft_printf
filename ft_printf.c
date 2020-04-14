@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:08:48 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/03/31 16:22:34 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/14 12:11:09 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int				ft_printf(const char *prt, ...)
 			decide(&g, ap);
 			prt = ft_substr(prt, x, ft_strlen(prt) - x);
 			i = 0;
-			// printf("dash = %d\nplus = %d\nspace = %d\nzero = %d\nhashtag = %d\nwidth = %d\ndot = %d\nprec = %d\nminus = %d\nconv = %c\n", g.dash, g.plus, g.space, g.zero, g.hashtag, g.width, g.dot, g.prec, g.minus, g.conv);
+			//printf("dash = %d\nplus = %d\nspace = %d\nzero = %d\nhashtag = %d\nwidth = %d\ndot = %d\nprec = %d\nminus = %d\nconv = %c\n", g.dash, g.plus, g.space, g.zero, g.hashtag, g.width, g.dot, g.prec, g.minus, g.conv);
 		}
 	}
 	va_end(ap);

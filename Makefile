@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 18:13:16 by fmanetti          #+#    #+#              #
-#    Updated: 2020/03/31 19:59:21 by fmanetti         ###   ########.fr        #
+#    Updated: 2020/04/14 11:07:16 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,13 @@ SOURCE = ft_printf.c \
 		tools/tools1.c \
 		tools/tools2.c \
 		tools/ft_conv_hexa.c \
+		tools/ft_ftoa.c \
+		tools/ft_bigint_add.c \
+		tools/ft_bigint_trim.c \
+		tools/ft_bigint_shift_right.c \
+		tools/ft_bigint_divide_by_two.c \
+		tools/ft_bigint_multiply_by_two.c \
+		tools/ft_bigint_round.c \
 		libft/ft_atoi.c \
 		libft/ft_putchar.c \
 		libft/my_putnbr.c \

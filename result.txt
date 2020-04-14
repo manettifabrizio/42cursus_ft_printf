@@ -1,0 +1,2 @@
++11.       --- Return : 10 - FT_PRINTF
++11.       --- Return : 10 - PRINTF
