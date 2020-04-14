@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmanetti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/07 13:02:34 by fmanetti          #+#    #+#             */
-/*   Updated: 2019/11/14 17:41:38 by fmanetti         ###   ########.fr       */
+/*   Created: 2019/11/05 16:43:38 by fmanetti          #+#    #+#             */
+/*   Updated: 2020/02/27 16:42:35 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+int		ft_isalpha(int c)
 {
-	size_t i;
-
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i] && i < (n - 1))
-		i++;
-	if (s1[i] != s2[i])
-		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	if (c >= 65 && c <= 90)
+		return (1);
+	else if (c >= 97 && c <= 122)
+		return (1);
 	else
 		return (0);
 }

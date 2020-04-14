@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 21:51:34 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/13 17:55:28 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/14 17:45:14 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char		*ft_bigint_divide_by_two(char *output)
 	int		finished;
 	int		even;
 
-	printf("before = %s\n", output);
+	// printf("before = %s\n", output);
 	output = ft_bigint_shift_right(output, 1);
 	output[0] = '0';
 	i = 0;
@@ -85,6 +85,7 @@ char		*ft_bigint_divide_by_two(char *output)
 		finished = is_over(output, &i, &j);
 		output[i] = ft_get_next_digit(output[j], even); //sostituisce i in base 
 		i = j;
+		// printf("after = %s\n", output);
 	}
 	return (ft_bigint_trim(output));
 }

@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmanetti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/15 14:46:42 by fmanetti          #+#    #+#             */
-/*   Updated: 2019/11/18 18:17:42 by fmanetti         ###   ########.fr       */
+/*   Created: 2019/11/12 10:57:22 by fmanetti          #+#    #+#             */
+/*   Updated: 2019/11/12 11:29:22 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char			*s2;
-	size_t			i;
-	unsigned int	x;
+	int		i;
+	char	*psrc;
+	char	*pdst;
 
 	i = 0;
-	if (!s)
-		return (NULL);
-	x = ft_strlen(s);
-	if (!(s2 = (char*)malloc((len + 1) * sizeof(char))))
-		return (NULL);
-	if (start > x)
-		return (ft_strdup(""));
-	while (i < len)
+	psrc = (char*)src;
+	pdst = (char*)dst;
+	if (n == 0 || dst == src)
+		return (dst);
+	while (n--)
 	{
-		s2[i] = s[start + i];
+		pdst[i] = psrc[i];
 		i++;
 	}
-	s2[i] = '\0';
-	return (s2);
+	return (dst);
 }

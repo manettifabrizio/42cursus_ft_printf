@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 16:13:59 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/14 13:32:41 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/14 17:45:34 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,19 @@ static int      setlength(char *decimal, t_lista *g)
 
 	i = 0;
 	f = 0;
-	//printf("dec = %s\n", decimal);
+	// printf("dec = %s\n", decimal);
     while (decimal[i] != '.' && decimal[i])
+		i++;
+	if (decimal[0] == '.')
 		i++;
 	while (decimal[i + f])
 		f++;
     if (g->dot == 1 && g->prec != 0)
-    {
-        if (g->prec > f)
-            length = i + g->prec;
-        else
-            length = i + f;
-    }
+        length = i + 1 + g->prec;
     else if (g->dot == 1 && g->prec == 0)
         length = i + g->hashtag;
     else
-        length = i;
+        length = i + 1 + g->prec;
     return (length);
 }
 
@@ -148,17 +145,17 @@ void    wfloat(va_list ap, t_lista *g)
 	//printf("bin = %s\n", binary);
 	if (binary[0] == '1')
 		g->minus = 1;
-	decimal = ft_ftoa(nbr, binary, g);
-	//printf("dec = %s\n", decimal);
+	decimal = ft_ftoa(nbr, binary);
+	// printf("dec = %s\n", decimal);
 	if (ft_strchr(decimal, 'i') == 0 && ft_strchr(decimal, 'n') == 0) //taglio in base alla precisione
 	{
 		tmp = g->prec == -1 ? 6 : g->prec;
 		decimal = ft_bigint_round(decimal, g->prec);
 		//decimal = deal_with_particular_cases(decimal, g);
 	}
-	//printf("dec = %s\n", decimal);
+	// printf("dec = %s\n", decimal);
 	length = setlength(decimal, g);
-	if (g->minus == 1 || g->plus == 1 || g->hashtag == 1)
+	if (g->minus == 1 || g->plus == 1)
 		g->width--;
 	wfloat1(decimal, g, length);
 	ft_memdel((void **)&binary);

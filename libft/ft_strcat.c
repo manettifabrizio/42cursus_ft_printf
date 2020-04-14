@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmanetti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/07 13:02:34 by fmanetti          #+#    #+#             */
-/*   Updated: 2019/11/14 17:41:38 by fmanetti         ###   ########.fr       */
+/*   Created: 2020/04/10 21:01:19 by fmanetti          #+#    #+#             */
+/*   Updated: 2020/04/10 21:01:21 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	size_t i;
+	size_t	i;
+	size_t	len1;
 
+	len1 = ft_strlen(s1);
 	i = 0;
-	if (n == 0)
-		return (0);
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i] && i < (n - 1))
+	while (s2[i])
+	{
+		s1[len1 + i] = s2[i];
 		i++;
-	if (s1[i] != s2[i])
-		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-	else
-		return (0);
+	}
+	s1[len1 + i] = '\0';
+	return (s1);
 }

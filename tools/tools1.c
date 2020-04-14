@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 21:17:38 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/14 13:33:01 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/14 17:44:30 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,14 @@ void    puthashtag(char *hexa, t_lista *g)
 void    putfloat(char *dec, int length, t_lista *g)
 {
     int i;
-    int f;
 
     i = 0;
     //printf("len = %d\n", length);
+    if (dec[0] == '.')
+    {
+        ft_putchar('0');
+        g->written++;
+    }
     while (i <= length && dec[i])
     {
         //printf("dec[%d] = %c\n", i, dec[i]);

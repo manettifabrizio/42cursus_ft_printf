@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmanetti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/15 14:46:42 by fmanetti          #+#    #+#             */
-/*   Updated: 2019/11/18 18:17:42 by fmanetti         ###   ########.fr       */
+/*   Created: 2019/11/19 13:54:29 by fmanetti          #+#    #+#             */
+/*   Updated: 2019/11/19 13:54:35 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char			*s2;
-	size_t			i;
-	unsigned int	x;
+	char	*space;
+	size_t	i;
 
 	i = 0;
-	if (!s)
+	if (!(space = malloc(sizeof(char) * (nmemb * size))))
 		return (NULL);
-	x = ft_strlen(s);
-	if (!(s2 = (char*)malloc((len + 1) * sizeof(char))))
-		return (NULL);
-	if (start > x)
-		return (ft_strdup(""));
-	while (i < len)
+	while (i < size * nmemb)
 	{
-		s2[i] = s[start + i];
+		space[i] = 0;
 		i++;
 	}
-	s2[i] = '\0';
-	return (s2);
+	return (space);
 }

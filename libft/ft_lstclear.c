@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/11 13:40:12 by fmanetti          #+#    #+#             */
-/*   Updated: 2019/11/28 16:45:48 by fmanetti         ###   ########.fr       */
+/*   Created: 2019/11/25 21:10:09 by fmanetti          #+#    #+#             */
+/*   Updated: 2019/11/28 12:24:52 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *s)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int x;
-	int c;
-	int res;
-	int sign;
+	t_list	*actual;
 
-	x = 0;
-	c = 0;
-	res = 0;
-	sign = 1;
-	while (s[x] == ' ' || (s[x] >= 8 && s[x] <= 13))
-		x++;
-	if (s[x] == '-')
-		sign *= -1;
-	while (s[x + c] == '+' || s[x + c] == '-')
-		c++;
-	while (s[x + c] >= '0' && s[x + c] <= '9')
+	if (!*lst)
+		return ;
+	actual = *lst;
+	while (actual != NULL)
 	{
-		res *= 10;
-		res += (int)s[x + c] - '0';
-		x++;
+		del(actual->content);
+		free(actual);
+		actual = actual->next;
 	}
-	if (c > 1)
-		return (0);
-	return (res * sign);
+	*lst = NULL;
 }

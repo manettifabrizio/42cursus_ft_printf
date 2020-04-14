@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 16:31:56 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/14 13:32:23 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/14 17:44:30 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int     ft_exponent(char *binary, int offset)
     return (exponent - (offset - 1));
 }
 
-char	*infinity_or_nan(char *output, t_lista *g)
+char	*infinity_or_nan(char *output)
 {
 	if (ft_strcmp(output, "0") == 0)
 	{
@@ -131,21 +131,23 @@ char	*final_str(char *output, int expo)
 	return (output);
 }
 
-char    *ft_ftoa(double nbr, char *binary, t_lista *g)
+char    *ft_ftoa(double nbr, char *binary)
 {
     int     exponent;
     char    *decimal;
 
     exponent = ft_exponent(binary, 1024);
-    if (!(decimal = (char *)ft_memalloc(100 * sizeof(char))))
+    //printf("expo = %d\n", exponent);  
+	if (!(decimal = (char *)ft_memalloc(100 * sizeof(char))))
 		return (NULL);
     decimal = ft_mantissa(binary + 12, decimal);
+	//printf("dec = %s\n", decimal);  
     if (nbr == 1)
 		decimal = ft_strcpy(decimal, "1.");
 	if (nbr == 0)
 		decimal = ft_strcpy(decimal, "0.");
 	else if (exponent == 1024)
-		decimal = infinity_or_nan(decimal, g);
+		decimal = infinity_or_nan(decimal);
 	else if (exponent != -1022)
 		decimal = final_str(decimal, exponent);
 	//printf("dec = %s\n", decimal);

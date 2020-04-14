@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmanetti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/15 14:46:42 by fmanetti          #+#    #+#             */
-/*   Updated: 2019/11/18 18:17:42 by fmanetti         ###   ########.fr       */
+/*   Created: 2019/11/11 10:28:48 by fmanetti          #+#    #+#             */
+/*   Updated: 2019/11/11 19:03:53 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 {
-	char			*s2;
-	size_t			i;
+	int				z;
 	unsigned int	x;
+	unsigned int	y;
 
-	i = 0;
-	if (!s)
-		return (NULL);
-	x = ft_strlen(s);
-	if (!(s2 = (char*)malloc((len + 1) * sizeof(char))))
-		return (NULL);
-	if (start > x)
-		return (ft_strdup(""));
-	while (i < len)
+	x = 0;
+	z = 0;
+	while (s1[x] != '\0')
 	{
-		s2[i] = s[start + i];
-		i++;
+		y = 0;
+		while (s1[x + y] == s2[y] && (x + y) < len)
+		{
+			if (s2[y + 1] == '\0')
+				return ((char*)s1 + x);
+			y++;
+			z++;
+		}
+		x++;
 	}
-	s2[i] = '\0';
-	return (s2);
+	if (ft_strlen(s2) == 0)
+		return ((char*)s1);
+	else
+		return (0);
 }

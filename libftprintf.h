@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:10:04 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/14 11:28:26 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/14 14:14:49 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ int					widthu(unsigned int x, t_lista *g);
 char				*ft_conv_hexa(long y);
 char				*ft_conv_hexa2(unsigned int i);
 
-char    			*ft_ftoa(double nbr, char *binary, t_lista *g);
+char    			*ft_ftoa(double nbr, char *binary);
 
 char    			*ft_bigint_add(char *decimal, const char *toadd);
 

@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmanetti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/15 14:46:42 by fmanetti          #+#    #+#             */
-/*   Updated: 2019/11/18 18:17:42 by fmanetti         ###   ########.fr       */
+/*   Created: 2019/11/07 10:44:38 by fmanetti          #+#    #+#             */
+/*   Updated: 2019/11/14 12:29:20 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strrchr(const char *s, int c)
 {
-	char			*s2;
-	size_t			i;
-	unsigned int	x;
+	int		y;
+	int		d;
+	int		i;
+	char	x;
 
 	i = 0;
-	if (!s)
-		return (NULL);
-	x = ft_strlen(s);
-	if (!(s2 = (char*)malloc((len + 1) * sizeof(char))))
-		return (NULL);
-	if (start > x)
-		return (ft_strdup(""));
-	while (i < len)
+	y = 0;
+	d = 0;
+	x = (char)c;
+	while (s[i] != '\0')
 	{
-		s2[i] = s[start + i];
+		if (s[i] == x)
+		{
+			d = i;
+			y++;
+		}
 		i++;
 	}
-	s2[i] = '\0';
-	return (s2);
+	if (s[i] == x)
+		return ((char*)&s[i]);
+	if (d != 0 || s[0] == x)
+		return ((char*)s + d);
+	return (0);
 }

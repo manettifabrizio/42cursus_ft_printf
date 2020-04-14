@@ -1,41 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/11 13:40:12 by fmanetti          #+#    #+#             */
-/*   Updated: 2019/11/28 16:45:48 by fmanetti         ###   ########.fr       */
+/*   Created: 2019/11/05 17:24:11 by fmanetti          #+#    #+#             */
+/*   Updated: 2020/02/27 16:42:18 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *s)
+int		ft_isdigit(int c)
 {
-	int x;
-	int c;
-	int res;
-	int sign;
-
-	x = 0;
-	c = 0;
-	res = 0;
-	sign = 1;
-	while (s[x] == ' ' || (s[x] >= 8 && s[x] <= 13))
-		x++;
-	if (s[x] == '-')
-		sign *= -1;
-	while (s[x + c] == '+' || s[x + c] == '-')
-		c++;
-	while (s[x + c] >= '0' && s[x + c] <= '9')
-	{
-		res *= 10;
-		res += (int)s[x + c] - '0';
-		x++;
-	}
-	if (c > 1)
-		return (0);
-	return (res * sign);
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
 }

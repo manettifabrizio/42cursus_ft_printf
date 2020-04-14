@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmanetti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/15 14:46:42 by fmanetti          #+#    #+#             */
-/*   Updated: 2019/11/18 18:17:42 by fmanetti         ###   ########.fr       */
+/*   Created: 2019/11/07 14:50:21 by fmanetti          #+#    #+#             */
+/*   Updated: 2019/11/19 20:28:53 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+size_t		ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	char			*s2;
-	size_t			i;
-	unsigned int	x;
+	size_t		x;
+	size_t		i;
 
+	if (!(dst || src))
+		return (0);
 	i = 0;
-	if (!s)
-		return (NULL);
-	x = ft_strlen(s);
-	if (!(s2 = (char*)malloc((len + 1) * sizeof(char))))
-		return (NULL);
-	if (start > x)
-		return (ft_strdup(""));
-	while (i < len)
+	x = (size_t)(ft_strlen(src));
+	if (size == 0 || dst == src)
+		return (ft_strlen(src));
+	while (src[i] != '\0' && i < (size - 1))
 	{
-		s2[i] = s[start + i];
+		dst[i] = src[i];
 		i++;
 	}
-	s2[i] = '\0';
-	return (s2);
+	dst[i] = '\0';
+	return (x);
 }

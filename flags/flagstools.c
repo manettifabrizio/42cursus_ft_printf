@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 16:48:34 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/03/31 19:29:29 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/14 14:13:27 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char			*numbersandstar(char *prt, int *x, t_lista *g, va_list ap)
 	int 	y;
 	int 	z;
 
+	z = 0;
 	y = (*x) + count(prt, (*x));
 	if (prt[*x] >= '0' && prt[*x] <= '9')
 	{

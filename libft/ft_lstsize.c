@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmanetti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/07 13:02:34 by fmanetti          #+#    #+#             */
-/*   Updated: 2019/11/14 17:41:38 by fmanetti         ###   ########.fr       */
+/*   Created: 2019/11/25 18:11:38 by fmanetti          #+#    #+#             */
+/*   Updated: 2019/11/28 12:25:28 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+int		ft_lstsize(t_list *lst)
 {
-	size_t i;
+	int			elem;
+	t_list		*actual;
 
-	i = 0;
-	if (n == 0)
+	elem = 0;
+	if (!lst)
 		return (0);
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i] && i < (n - 1))
-		i++;
-	if (s1[i] != s2[i])
-		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-	else
-		return (0);
+	actual = lst;
+	while (actual != NULL)
+	{
+		actual = actual->next;
+		elem++;
+	}
+	return (elem);
 }
