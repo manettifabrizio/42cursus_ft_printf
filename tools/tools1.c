@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 21:17:38 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/14 17:44:30 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/14 21:33:51 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,31 +36,6 @@ void    puthashtag(char *hexa, t_lista *g)
         g->written += 2;
     }
 }
-
-// int     divide(double nbr, int *i, int *f, int prec)
-// {
-//     int sign;
-
-//     (*f) = 0;
-//     sign = 0;
-// //    printf("DIVIDE\n");
-//     (*i) = (int)nbr;
-// 	nbr -= (*i);
-//     if (nbr < 0)
-//         sign = 1;
-// //    printf("nbr = %lf\n", nbr);
-// 	while (nbr > 0 && prec > 0)
-// 	{
-//         // printf("nbr = %lf f = %d\n", nbr, (*f));
-// 		(*f) *= 10;
-// 		(*f) += (int)(nbr *= 10);
-// 		nbr -= (int)nbr;
-// 		prec--;
-//         // printf("f = %d\n", (*f));
-// 	}
-//     // printf("finalf = %d\n", (*f));
-//     return (sign);
-// }
 
 void    putfloat(char *dec, int length, t_lista *g)
 {

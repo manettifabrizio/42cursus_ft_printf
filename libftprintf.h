@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:10:04 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/14 14:14:49 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/15 13:29:00 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ void				hexadecimal(va_list ap, t_lista *g);
 void    			number(va_list ap, t_lista *g);
 void    			wfloat(va_list ap, t_lista *g);
 void    			percent(t_lista *g);
+void    			float_f(char *decimal, t_lista *g);
+void    			float_e(char *decimal, t_lista *g);
 
 void				putspace(int x, int y, t_lista *g);
 void				putzero(int x, int y, t_lista *g);
@@ -134,18 +136,14 @@ int					widthu(unsigned int x, t_lista *g);
 char				*ft_conv_hexa(long y);
 char				*ft_conv_hexa2(unsigned int i);
 
+void    			convert_float(va_list ap, t_lista *g);
 char    			*ft_ftoa(double nbr, char *binary);
-
 char    			*ft_bigint_add(char *decimal, const char *toadd);
-
+char				*fill_right(char *str, size_t len);
 char				*ft_bigint_trim(char *str);
-
 char				*ft_bigint_shift_right(char *str, size_t nb);
-
 char				*ft_bigint_multiply_by_two(char *output);
-
 char				*ft_bigint_divide_by_two(char *output);
-
 char				*ft_bigint_round(char *dst, int precision);
 
 void				my_putnbr(int nb, t_lista *g);

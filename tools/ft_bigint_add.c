@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 19:08:23 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/10 21:48:16 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/15 13:28:18 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	getindex(char *str, char c)
 	return (i);
 }
 
-static char	*fill_right(char *str, size_t len)
+char	*fill_right(char *str, size_t len)
 {
 	size_t i;
 

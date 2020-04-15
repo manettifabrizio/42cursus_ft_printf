@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 18:13:16 by fmanetti          #+#    #+#              #
-#    Updated: 2020/04/14 15:10:31 by fmanetti         ###   ########.fr        #
+#    Updated: 2020/04/15 11:22:51 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,13 @@ SOURCE = 	ft_printf.c \
 			write/string.c \
 			write/pointer.c \
 			write/hexadecimal.c \
-			write/floatw.c \
 			write/percent.c \
 			write/number.c \
+			write/float_f.c \
+			write/float_e.c \
 			flags/flags.c \
 			flags/flagstools.c \
+			tools/convert_float.c \
 			tools/tools.c \
 			tools/tools1.c \
 			tools/tools2.c \

@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 16:31:56 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/14 17:44:30 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/14 21:31:54 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,12 +136,10 @@ char    *ft_ftoa(double nbr, char *binary)
     int     exponent;
     char    *decimal;
 
-    exponent = ft_exponent(binary, 1024);
-    //printf("expo = %d\n", exponent);  
+    exponent = ft_exponent(binary, 1024); 
 	if (!(decimal = (char *)ft_memalloc(100 * sizeof(char))))
 		return (NULL);
     decimal = ft_mantissa(binary + 12, decimal);
-	//printf("dec = %s\n", decimal);  
     if (nbr == 1)
 		decimal = ft_strcpy(decimal, "1.");
 	if (nbr == 0)
@@ -150,6 +148,5 @@ char    *ft_ftoa(double nbr, char *binary)
 		decimal = infinity_or_nan(decimal);
 	else if (exponent != -1022)
 		decimal = final_str(decimal, exponent);
-	//printf("dec = %s\n", decimal);
     return (decimal);
 }

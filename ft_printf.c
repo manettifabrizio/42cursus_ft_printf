@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:08:48 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/14 12:11:09 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/15 11:53:04 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void		choice(char c, t_lista *g)
 		g->conv = 'n';
 	else if (c == 'f')
 	 	g->conv = 'f';
+	else if (c == 'e')
+		g->conv = 'e';
 	// else if (c == 'g')
 	// 	g->conv = 'g';
-	// else if (c == 'e')
-	// 	g->conv = 'e';
 }
 
 static int		decide(t_lista *g, va_list ap)
@@ -61,8 +61,8 @@ static int		decide(t_lista *g, va_list ap)
 		hexadecimal(ap, g);
 	else if (g->conv == 'n')
 		number(ap, g);
-	else if (g->conv == 'f')
-		wfloat(ap, g);
+	else if (g->conv == 'f' || g->conv == 'e' || g->conv == 'g')
+		convert_float(ap, g);
 	else if (g->conv == '%')
 		percent(g);
 	return (0);
