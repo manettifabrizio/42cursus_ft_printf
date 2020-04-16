@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:10:04 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/15 13:29:00 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/16 13:14:10 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ typedef	struct		s_lista
 	int				precm;
 	int				width;
 	int				minus;
+	int 			inf;
+	char			*expo;
 	char			conv;
 }					t_lista;
 
@@ -125,7 +127,9 @@ void    			putblank(t_lista *g);
 void    			puthashtag(char *hexa, t_lista *g);
 int     			divide(double nbr, int *i, int *f, int prec);
 void    			putfloat(char *dec, int length, t_lista *g);
-int					widthf(int x, t_lista *g);
+void    			putexpo(char *dec, int length, int sign, t_lista *g);
+char    			*my_strjoin(char *s1, char *s2);
+//int				widthf(int x, t_lista *g);
 
 void				minus(t_lista *g);
 char				*up(char *str);
@@ -137,14 +141,13 @@ char				*ft_conv_hexa(long y);
 char				*ft_conv_hexa2(unsigned int i);
 
 void    			convert_float(va_list ap, t_lista *g);
-char    			*ft_ftoa(double nbr, char *binary);
-char    			*ft_bigint_add(char *decimal, const char *toadd);
-char				*fill_right(char *str, size_t len);
+char    			*ft_ftoa(double nbr, char *binary, size_t size);
+char    			*ft_bigint_add(char *decimal, const char *toadd, size_t size);
 char				*ft_bigint_trim(char *str);
-char				*ft_bigint_shift_right(char *str, size_t nb);
-char				*ft_bigint_multiply_by_two(char *output);
-char				*ft_bigint_divide_by_two(char *output);
-char				*ft_bigint_round(char *dst, int precision);
+char				*ft_bigint_shift_right(char *str, size_t nb, size_t size);
+char				*ft_bigint_multiply_by_two(char *output, size_t size);
+char				*ft_bigint_divide_by_two(char *output, size_t size);
+char				*ft_bigint_round(char *dst, int precision, size_t size);
 
 void				my_putnbr(int nb, t_lista *g);
 void				my_putstr(char *str, int x, t_lista *g);

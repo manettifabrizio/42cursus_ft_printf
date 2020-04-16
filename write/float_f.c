@@ -6,13 +6,13 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 21:21:47 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/15 13:40:50 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/16 11:48:56 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-static void		write_f2(char *decimal, t_lista *g, int length)
+static void		write_f2(char *decimal, int length, t_lista *g)
 {
 	if (g->dash == 1)
 	{
@@ -30,11 +30,11 @@ static void		write_f2(char *decimal, t_lista *g, int length)
 	}
 }
 
-static void		write_f(char *decimal, t_lista *g, int length)
+static void		write_f(char *decimal, int length, t_lista *g)
 {
 	if (g->width > length)
 	{
-		if (g->zero == 1)
+		if (g->zero == 1 && g->inf == 0)
 		{
 			minus(g);
 			putblank(g);
@@ -42,7 +42,7 @@ static void		write_f(char *decimal, t_lista *g, int length)
 			putfloat(decimal, length, g);
 		}
 		else
-			write_f2(decimal, g, length);		
+			write_f2(decimal, length, g);		
 	}
 	else
 	{
@@ -52,33 +52,25 @@ static void		write_f(char *decimal, t_lista *g, int length)
 	}
 }
 
-static int      set_length_f(char *decimal, t_lista *g)
-{
-    int i;
-    int f;
-    int length;
-
-	i = 0;
-	f = 0;
-    while (decimal[i] != '.' && decimal[i])
-		i++;
-	while (decimal[i + f])
-		f++;
-    if (g->dot == 1 && g->prec != 0)
-        length = i + 1 + g->prec;
-    else if (g->dot == 1 && g->prec == 0)
-        length = i + g->hashtag;
-    else
-	    length = i + 1 + g->prec;
-    return (length);
-}
-
 void    		float_f(char *decimal, t_lista *g)
 {
     int length;
 
-    length = set_length_f(decimal, g);
+	if (ft_strcmp(decimal, "inf") == 0 || ft_strcmp(decimal, "nan") == 0)
+	{
+		g->hashtag = 0;
+		g->zero = 0;
+		if (ft_strcmp(decimal, "nan") == 0)
+		{
+			g->plus = 0;
+			g->space = 0;
+		}
+	}
+	if (g->dot == 1 && g->prec == 0)
+        length = ft_strlen(decimal) + g->hashtag;
+    else
+	    length = ft_strlen(decimal);
     if (g->minus == 1 || g->plus == 1)
 		g->width--;
-	write_f(decimal, g, length);
+	write_f(decimal, length, g);
 }

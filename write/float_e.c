@@ -6,90 +6,157 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 21:34:14 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/15 13:41:01 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/16 11:21:54 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-char    *dec_to_e(char *decimal)
+char    *dec_to_e(char *dec, int *sign, t_lista *g)
 { //gli zeri sono già tagliati da trim
     int x;
     int y;
-    int exponent;
-    int exposign;
 
     x = 0;
     y = -1;
-    exposign = 0;
-    printf("dec = %s\n", decimal);
-    while (decimal[x] != '.' && decimal[x]) //controllo prima della virgola
+    (*sign) = 0;
+    // printf("dec = %s\n", dec);
+    while (dec[x] != '.' && dec[x]) //controllo prima della virgola
     {
-        if (decimal[x] >= '1' && decimal[x] <= '9')
-            y++;;
+        if (dec[x] >= '1' && dec[x] <= '9')
+            y++;
         x++;
     }
-    printf("x = %d\n", x);
+    // printf("x = %d\n", x);
     if (y == -1)
     {
-        while (decimal[x + y] == '0' && decimal[x + y])
+        y = 1; //per la virgola
+        (*sign) = 1;
+        while (dec[x + y] == '0' && dec[x + y])
             y++;
-        exposign = 1;
+        // printf("dec[%d] = %c\n", x + y, dec[x + y - 1]);
+        if ((dec[x + y - 1] == '0' || dec[x + y - 1] == '.') && \
+            dec[x + y] == '\0')
+            (*sign) = 2;
     }
-    exponent = exposign == 1 ? y + 1 : x - (y + 1);
+    if ((*sign) != 2)
+        g->expo = (*sign) == 1 ? ft_itoa(y) : ft_itoa(x - (y + 1));
+    // printf("decb = %s\nx = %d\ny = %d\nsign = %d\n", dec, x, y, *sign);
     y += x;
-    printf("decimalb = %s\nx = %d\ny = %d\n", decimal, x, y);
-    if (exposign == 0)
+    if ((*sign) == 0)
     {   
         while (x > 0)
         {
-            decimal[x] = decimal[x - 1];
+            dec[x] = dec[x - 1];
             x--;
         }
-        decimal[x + 1] = '.';
+        dec[x + 1] = '.';
     }
-    else if (exposign == 1)
+    else if ((*sign) == 1)
     {
-        while (x <= y)
+        while (x < y)
         {
-            decimal[x] = decimal[x + 1];
+            dec[x] = dec[x + 1];
             x++;
         }
-        decimal[x] = '.';
+        dec[x] = '.';
     }
-    printf("decimal = %s\nexponent = %d\nexposign = %d\n", decimal, exponent, exposign);
-    return (ft_bigint_trim(decimal));
+    else if (*sign == 2)
+        g->expo = ft_strdup("00");
+    g->expo = ft_strlen(g->expo) == 1 ? ft_strjoin("0", g->expo) : g->expo;
+    // printf("dec = %s\nexpo = %s\nsign = %d\n", dec, g->expo, *sign);
+    return (ft_bigint_trim(dec));
+}
+
+static void		write_e2(char *decimal, int length, int sign, t_lista *g)
+{
+	if (g->dash == 1)
+	{
+		minus(g);
+		putblank(g);
+		putexpo(decimal, length, sign, g);
+		putspace(g->width, length, g);
+	}
+	else
+	{
+		putblank(g);
+		putspace(g->width, length, g);
+		minus(g);
+		putexpo(decimal, length, sign, g);
+	}
+}
+
+static void		write_e(char *decimal, int length, int sign, t_lista *g)
+{
+	if (g->width > length)
+	{
+		if (g->zero == 1)
+		{
+			minus(g);
+			putblank(g);
+			putzero(g->width, length, g);
+			putexpo(decimal, length, sign, g);
+		}
+		else
+			write_e2(decimal, length, sign, g);		
+	}
+	else
+	{
+		putblank(g);
+		minus(g);
+		putexpo(decimal, length, sign, g);
+	}
 }
 
 int     set_length_e(char *decimal, t_lista *g)
 {
     int i;
-    int f;
     int length;
 
 	i = 0;
-	f = 0;
     while (decimal[i] != '.' && decimal[i])
 		i++;
-	while (decimal[i + f])
-		f++;
-    if (g->dot == 1 && g->prec != 0)
-        length = i + 1 + g->prec;
-    else if (g->dot == 1 && g->prec == 0)
-        length = i + g->hashtag;
+    i += 2; //+2 x e+-
+    if (g->dot == 1 && g->prec == 0)
+        length = i + g->hashtag + ft_strlen(g->expo);
     else
-	    length = i + 1 + g->prec;
+	    length = i + 1 + g->prec + ft_strlen(g->expo);
     return (length);
+}
+
+char    *zero_check(char *str, int len)
+{
+    int x;
+    int y;
+    char str1[len + 1];
+
+    x = 0;
+    y = 0;
+    if (str[0] == '.')
+		str = ft_strjoin("0", str);
+    while (str[y] != '.' && str[y])
+		y++;
+	while (x <= (len - y))
+	{
+		str1[x] = '0';
+		x++;
+	}
+	str1[x] = '\0';
+    str = ft_strjoin(str, str1);
+	return (str);
 }
 
 void    float_e(char *decimal, t_lista *g)
 {
+    int     sign;
     int     length;
 
-    decimal = dec_to_e(decimal);
-    printf("precision = %d\n", g->prec);
-    decimal = fill_right(decimal, (g->prec + 2));
-    printf("dec = %s\n", decimal);
+    decimal = dec_to_e(decimal, &sign, g);
+    // printf("precision = %d\n", g->prec);
+    // printf("dec = %s\n", decimal);
+    decimal = zero_check(decimal, g->prec);
     length = set_length_e(decimal, g);
-    write_e(decimal, g, length);
+    // printf("strlen = %d\n", ft_strlen(decimal) + width(g->expo, g));
+    // printf("length = %d\n", length);
+    write_e(decimal, length, sign, g);
 }

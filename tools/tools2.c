@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 11:49:21 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/03/31 16:21:35 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/16 11:21:31 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	minus(t_lista *g)
 		write(1, "+", 1);
 		g->written++;
 	}
-	
 }
 
 char	*up(char *str)

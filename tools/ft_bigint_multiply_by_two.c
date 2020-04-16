@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 21:51:22 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/14 17:28:39 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/16 13:10:35 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	is_valid_digit(char c)
 	return (0);
 }
 
-char		*ft_bigint_multiply_by_two(char *output)
+char		*ft_bigint_multiply_by_two(char *output, size_t size)
 {
 	size_t	len;
 	int		ret;
@@ -29,6 +29,8 @@ char		*ft_bigint_multiply_by_two(char *output)
 	ret = 0;
 	while (output[len])
 		len++;
+	if (len == size)
+	 	len = size - 1;
 	output[len + 1] = 0;
 	if (ft_strcmp(output, "0") == 0)
 		output[0] = '1';

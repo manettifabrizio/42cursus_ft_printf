@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 21:51:34 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/14 17:45:14 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/16 13:11:29 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,18 @@ static char	ft_get_next_digit(char digit, int next_is_even)
 	return (0);
 }
 
-static int	is_over(char *output, size_t *i, size_t *j)
+static int	is_over(char *output, size_t *i, size_t *j, size_t size)
 {
 	int finished;
 
 	finished = 0;
-	while ((ft_isdigit(output[*i]) == 0) && output[*i])
+	while (*i < size - 1 && ft_isdigit(output[*i]) == 0 && output[*i])
 	{
 		output[*i - 1] = output[*i];
 		(*i)++;
 	}
 	(*j)++;
-	while ((ft_isdigit(output[*j]) == 0) && output[*j])
+	while (*j < size - 1 &&(ft_isdigit(output[*j]) == 0) && output[*j])
 	{
 		output[*j - 1] = output[*j];
 		(*i)++;
@@ -66,7 +66,7 @@ static int	is_over(char *output, size_t *i, size_t *j)
 	return (finished);
 }
 
-char		*ft_bigint_divide_by_two(char *output)
+char		*ft_bigint_divide_by_two(char *output, size_t size)
 {
 	size_t	i;
 	size_t	j;
@@ -74,15 +74,15 @@ char		*ft_bigint_divide_by_two(char *output)
 	int		even;
 
 	// printf("before = %s\n", output);
-	output = ft_bigint_shift_right(output, 1);
+	output = ft_bigint_shift_right(output, 1, size);
 	output[0] = '0';
 	i = 0;
 	j = 0;
 	finished = 0;
-	while (output[i] && finished != 1)
+	while (i < size && output[i] && finished != 1)
 	{
 		even = (output[i] - '0') % 2;
-		finished = is_over(output, &i, &j);
+		finished = is_over(output, &i, &j, size);
 		output[i] = ft_get_next_digit(output[j], even); //sostituisce i in base 
 		i = j;
 		// printf("after = %s\n", output);

@@ -6,13 +6,13 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 20:07:18 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/11 16:52:35 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/15 21:20:04 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-static char	*bigintrimright(char *str)
+char	*bigintrimright(char *str)
 {
 	size_t i;
 	size_t len;

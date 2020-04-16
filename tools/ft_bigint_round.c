@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 10:54:41 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/15 12:16:39 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/16 13:16:50 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,43 +33,49 @@ static char	*get_to_add(int n)
 	return (to_add);
 }
 
-static char	*ft_banker_round(char *dst, int precision, int i)
+static char	*ft_banker_round(char *dst, int precision, int i, size_t size)
 {
 	int		j;
 	char	*to_add;
     j = i - 1;
-    if (dst[i - 1] == '.') //se dst[i] è il numero dopo la virgola
-    {
-        i--;
-        j--;
-    }
-    if ((dst[j] - '0') % 2 == 0) //nel caso in cui il numero prima di 5 sia pari mette lo spazio al 5
-    {
-        dst[i] = 0;
-        return (dst);
-    }
-    else //se è dispari aggiunge 1 
-    {
-        to_add = get_to_add(precision);
-        dst = ft_bigint_add(dst, to_add);
-        ft_memdel((void **)&to_add);
-        return (ft_bigint_round(dst, precision));
-    }
+    if (i < (int)size)
+	{
+		if (dst[i - 1] == '.') //se dst[i] è il numero dopo la virgola
+		{
+			i--;
+			j--;
+		}
+		if ((dst[j] - '0') % 2 == 0) //nel caso in cui il numero prima di 5 sia pari mette lo spazio al 5
+		{
+			dst[i] = 0;
+			return (dst);
+		}
+		else //se è dispari aggiunge 1 
+		{
+			to_add = get_to_add(precision);
+			dst = ft_bigint_add(dst, to_add, size);
+			ft_memdel((void **)&to_add);
+			return (ft_bigint_round(dst, precision, size));
+		}
+	}
 	return (NULL);
 }
 
-static char	*ft_big_int_round_inf(char *dst, int precision, int i)
+static char	*ft_big_int_round_inf(char *dst, int precision, int i, size_t size)
 {
-	(void)precision;
-    if (dst[i - 1] == '.')
-        i--;
-    dst[i] = '\0';
-    return (dst);
+	if (i < (int)size)
+	{
+		(void)precision;
+		if (dst[i - 1] == '.')
+			i--;
+		dst[i] = '\0';
+	}
+	return (dst);
 }
 
-static char	*ft_big_int_round_add(char *dst, int precision, int i)
+static char	*ft_big_int_round_add(char *dst, int precision, int i, size_t size)
 {
-	while (precision != 0)
+	while (precision != 0 && i < (int)size)
 	{
 		dst[i] = '0';
 		i++;
@@ -91,7 +97,7 @@ int	ft_bigint_get_index(char *str, char c)
 	return (i);
 }
 
-char		*ft_bigint_round(char *dst, int precision)
+char		*ft_bigint_round(char *dst, int precision, size_t size)
 {
 	int		i;
 	char	*to_add;
@@ -106,13 +112,13 @@ char		*ft_bigint_round(char *dst, int precision)
 	while (dst[++i] && precision != 0)
 		precision--;
 	if (dst[i] == 0)
-		return (ft_big_int_round_add(dst, precision, i));
+		return (ft_big_int_round_add(dst, precision, i, size));
 	else if (dst[i] == '5' && dst[i + 1] == 0)
-	 	return (ft_banker_round(dst, precision_cpy, i));
+	 	return (ft_banker_round(dst, precision_cpy, i, size));
 	else if (dst[i] < '5')
-		return (ft_big_int_round_inf(dst, precision_cpy, i));
+		return (ft_big_int_round_inf(dst, precision_cpy, i, size));
 	to_add = get_to_add(precision_cpy);
-	dst = ft_bigint_add(dst, to_add);
+	dst = ft_bigint_add(dst, to_add, size);
 	ft_memdel((void **)&to_add);
-	return (ft_bigint_round(dst, precision_cpy));
+	return (ft_bigint_round(dst, precision_cpy, size));
 }

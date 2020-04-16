@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 19:08:23 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/15 13:28:18 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/16 12:45:27 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	getindex(char *str, char c)
 	return (i);
 }
 
-char	*fill_right(char *str, size_t len)
+static char	*fill_right(char *str, size_t len)
 {
 	size_t i;
 
@@ -38,7 +38,7 @@ char	*fill_right(char *str, size_t len)
 	return (str);
 }
 
-char    *set_to_add(char **dec, const char *add)
+char    *set_to_add(char **dec, const char *add, size_t size)
 {
     int     len;
     char    *addcp;
@@ -54,15 +54,15 @@ char    *set_to_add(char **dec, const char *add)
 	addindex = getindex(addcp, '.');
 	dotindex = decindex > addindex ? decindex : addindex;
 	dotindex++;
-    *dec = ft_bigint_shift_right(*dec, dotindex - decindex);
-	addcp = ft_bigint_shift_right(addcp, dotindex - addindex);
+    *dec = ft_bigint_shift_right(*dec, dotindex - decindex, size);
+	addcp = ft_bigint_shift_right(addcp, dotindex - addindex, size);
 	len = ft_strlen(*dec) < ft_strlen(addcp) ? ft_strlen(addcp) : ft_strlen(*dec);
 	*dec = fill_right(*dec, len);
 	addcp = fill_right(addcp, len);
     return (addcp);
 }
 
-char    *ft_bigint_add(char *dec, const char *toadd)
+char    *ft_bigint_add(char *dec, const char *toadd, size_t size)
 {
     char    *add;
     int     len;
@@ -70,7 +70,7 @@ char    *ft_bigint_add(char *dec, const char *toadd)
     int     decimal;
 
     change = 0;
-    add = set_to_add(&dec, toadd);
+    add = set_to_add(&dec, toadd, size);
     len = ft_strlen(dec) < ft_strlen(add) ? ft_strlen(add) : ft_strlen(dec);
 	len--;
 	while (len >= 0)

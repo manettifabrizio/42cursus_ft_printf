@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 16:13:59 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/15 13:19:07 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/16 12:43:45 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,24 +73,52 @@ static char		*deal_with_particular_cases(char *output)
 		output = ft_strjoin("0", output);
 	if (ft_strlen(output) == 0)
 		output = ft_strcpy(output, "0");
+	
 	return (output);
+}
+
+static size_t	ft_nblen(double nb)
+{
+	size_t		nblen;
+
+	nblen = 0;
+	if (nb == 0)
+		return (1);
+	if (nb < 0)
+	{
+		nb = -nb;
+		nblen++;
+	}
+	while (nb != 0)
+	{
+		if (nblen == 300)
+			break ;
+		nb /= 10;
+		nblen++;
+	}
+	return (nblen);
 }
 
 void    convert_float(va_list ap, t_lista *g)
 {
     double  nbr;
+	size_t	size;
 	char	*binary;
 	char	*decimal;
 
     nbr = va_arg(ap, double);
+	size = g->prec < 40 ? 40 : g->prec + 5; 
+	size += ft_nblen(nbr);
 	binary = doubletobinary(nbr);
 	if (binary[0] == '1')
 		g->minus = 1;
-	decimal = ft_ftoa(nbr, binary);
+	decimal = ft_ftoa(nbr, binary, size);
 	if (ft_strchr(decimal, 'i') == 0 && ft_strchr(decimal, 'n') == 0) //taglio in base alla precisione
 	{
-		decimal = ft_bigint_round(decimal, g->prec);
+		if (g->conv == 'f')
+			decimal = ft_bigint_round(decimal, g->prec);
 		decimal = deal_with_particular_cases(decimal);
+		g->inf = 0;
 	}
 	which(decimal, g);
 	ft_memdel((void **)&binary);

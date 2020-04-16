@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bigint_shift_right.c                            :+:      :+:    :+:   */
+/*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/11 16:52:52 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/16 12:45:26 by fmanetti         ###   ########.fr       */
+/*   Created: 2020/04/15 23:16:57 by fmanetti          #+#    #+#             */
+/*   Updated: 2020/04/16 12:22:38 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "libftprintf.h"
+#include <math.h>
 
-char	*ft_bigint_shift_right(char *str, size_t nb, size_t size)
-{
-	size_t len;
+int main()
+{ 
 
-	len = ft_strlen(str);
-	if (len == 0 || nb <= 0)
-		return (str);
-	len = len + nb;
-	if (len + 1 > size)
-		len = size - 1;
-	str[len + 1] = 0;
-	while (len >= nb)
-	{
-		str[len] = str[len - nb];
-		len--;
-	}
-	while (nb != 0)
-	{
-		str[nb - 1] = '0';
-		nb--;
-	}
-	return (str);
+    ft_printf("%f|%f|%f|%f\n\n", 0x1p-1074, 0x1.ffffffffffffep-1023, 0x1.4e46p-1058, 0x1.59a8b0c3dp-1037);
+    printf("%f|%f|%f|%f\n", 0x1p-1074, 0x1.ffffffffffffep-1023, 0x1.4e46p-1058, 0x1.59a8b0c3dp-1037);
+
 }
-

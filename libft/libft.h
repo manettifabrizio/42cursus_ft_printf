@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 18:15:22 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/10 21:03:15 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/15 21:19:51 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ char				*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 void				ft_putchar(char c);
 void				ft_putchar_fd(char c, int fd);
 int					ft_strlen(const char *s);
+void				ft_putstr(char *str);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr(int nb);

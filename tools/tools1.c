@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 21:17:38 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/14 21:33:51 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/16 11:32:02 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void    putblank(t_lista *g)
 {
     if (g->space == 1 && g->minus == 0)
     {
-        //printf("a");
         write(1, " ", 1);
         g->width--;
         g->written++;
@@ -42,15 +41,8 @@ void    putfloat(char *dec, int length, t_lista *g)
     int i;
 
     i = 0;
-    //printf("len = %d\n", length);
-    if (dec[0] == '.')
-    {
-        ft_putchar('0');
-        g->written++;
-    }
     while (i <= length && dec[i])
     {
-        //printf("dec[%d] = %c\n", i, dec[i]);
         ft_putchar(dec[i]);
         i++;
         g->written++;
@@ -62,28 +54,22 @@ void    putfloat(char *dec, int length, t_lista *g)
     }
 }
 
-int		widthf(int x, t_lista *g)
+void    putexpo(char *dec, int length, int sign, t_lista *g)
 {
-	int y;
-	long z;
+    int i;
 
-	z = x;
-	y = 0;
-	if (z == 0)
-	{	
-		if (g->dot == 1 && g->prec == 0)
-			return (0);
-		return (1);
-	}
-	if (z < 0)
-	{
-		g->minus = 1;
-		z *= -1;
-	}
-	while (z > 0)
-	{
-		z /= 10;
-		y++;
-	}
-	return (y);
+    i = 0;
+    length -= (2 + ft_strlen(g->expo));
+    while (i < length && dec[i])
+    {
+        ft_putchar(dec[i]);
+        i++;
+        g->written++;
+    }
+    if (sign == 0 || sign == 2)
+        my_putstr("e+", 2, g);
+    else
+        my_putstr("e-", 2, g);
+    g->written += (2 + ft_strlen(g->expo));
+    ft_putstr(g->expo);
 }

@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 16:31:56 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/14 21:31:54 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/16 13:14:12 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static const char	*g_half_powers[] =
 	0,
 };
 
-char    *ft_mantissa(char *binary, char *decimal)
+char    *ft_mantissa(char *binary, char *decimal, size_t size)
 {
     int     x;
 
@@ -73,7 +73,7 @@ char    *ft_mantissa(char *binary, char *decimal)
     while (binary[x] && x < 64)
     {
         if (binary[x] == '1')
-            decimal = ft_bigint_add(decimal, g_half_powers[x + 1]);
+            decimal = ft_bigint_add(decimal, g_half_powers[x + 1], size);
         x++;
     }
     if (ft_strcmp(decimal, "1") == 0) // caso in cui mantissa non ci sia 
@@ -113,33 +113,33 @@ char	*infinity_or_nan(char *output)
 	return (output);
 }
 
-char	*final_str(char *output, int expo)
+char	*final_str(char *output, int expo, size_t size)
 {
 	while (expo != 0)
 	{
 		if (expo < 0)
 		{
-			output = ft_bigint_divide_by_two(output);
+			output = ft_bigint_divide_by_two(output, size);
 			expo++;
 		}
 		else
 		{
-			output = ft_bigint_multiply_by_two(output);
+			output = ft_bigint_multiply_by_two(output, size);
 			expo--;
 		}
 	}
 	return (output);
 }
 
-char    *ft_ftoa(double nbr, char *binary)
+char    *ft_ftoa(double nbr, char *binary, size_t size)
 {
     int     exponent;
     char    *decimal;
 
     exponent = ft_exponent(binary, 1024); 
-	if (!(decimal = (char *)ft_memalloc(100 * sizeof(char))))
+	if (!(decimal = (char *)ft_memalloc(size * sizeof(char))))
 		return (NULL);
-    decimal = ft_mantissa(binary + 12, decimal);
+    decimal = ft_mantissa(binary + 12, decimal, size);
     if (nbr == 1)
 		decimal = ft_strcpy(decimal, "1.");
 	if (nbr == 0)
@@ -147,6 +147,6 @@ char    *ft_ftoa(double nbr, char *binary)
 	else if (exponent == 1024)
 		decimal = infinity_or_nan(decimal);
 	else if (exponent != -1022)
-		decimal = final_str(decimal, exponent);
+		decimal = final_str(decimal, exponent, size);
     return (decimal);
 }
