@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:08:48 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/16 11:06:14 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/16 21:07:30 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ static void		flagbegin(t_lista *g)
 	g->precm = 0;
 	g->width = 0;
 	g->minus = 0;
+	g->expo = ft_strdup("00");
 	g->inf = 1;
 	g->conv = 'a';
 }

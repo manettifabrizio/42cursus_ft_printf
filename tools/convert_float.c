@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 16:13:59 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/16 12:43:45 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/16 20:49:45 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ char	*doubletobinary(double nbr)
 	return (binary);
 }
 
-void	which(char *decimal, t_lista *g)
+void	which(char *decimal, size_t size, t_lista *g)
 {
 	if (g->conv == 'f')
 		float_f(decimal, g);
 	if (g->conv == 'e')
-		float_e(decimal, g);
+		float_e(decimal, size, g);
 }
 
 static char		*deal_with_particular_cases(char *output)
@@ -73,7 +73,6 @@ static char		*deal_with_particular_cases(char *output)
 		output = ft_strjoin("0", output);
 	if (ft_strlen(output) == 0)
 		output = ft_strcpy(output, "0");
-	
 	return (output);
 }
 
@@ -116,11 +115,12 @@ void    convert_float(va_list ap, t_lista *g)
 	if (ft_strchr(decimal, 'i') == 0 && ft_strchr(decimal, 'n') == 0) //taglio in base alla precisione
 	{
 		if (g->conv == 'f')
-			decimal = ft_bigint_round(decimal, g->prec);
+			decimal = ft_bigint_round(decimal, g->prec, size);
 		decimal = deal_with_particular_cases(decimal);
 		g->inf = 0;
 	}
-	which(decimal, g);
+	// printf("dec = %s\n", decimal);
+	which(decimal, size, g);
 	ft_memdel((void **)&binary);
 	ft_memdel((void **)&decimal);
 }

@@ -6,13 +6,13 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 19:08:23 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/16 12:45:27 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/16 20:57:27 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-static int	getindex(char *str, char c)
+int			getindex(char *str, char c)
 {
 	int i;
 

@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 21:17:38 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/16 11:32:02 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/16 19:51:07 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,30 @@ void    putexpo(char *dec, int length, int sign, t_lista *g)
     int i;
 
     i = 0;
-    length -= (2 + ft_strlen(g->expo));
+    // printf("lengthb = %d\n", length);
+    if ((ft_strcmp(dec, "inf") && ft_strcmp(dec, "nan")) != 0)
+        length -= (2 + ft_strlen(g->expo));
+    // printf("lengtha = %d\n", length);
+    // printf("dec = %s\n", dec);
     while (i < length && dec[i])
     {
+        // printf("dec[%d] = %c\n", i, dec[i]);
         ft_putchar(dec[i]);
         i++;
         g->written++;
     }
-    if (sign == 0 || sign == 2)
-        my_putstr("e+", 2, g);
-    else
-        my_putstr("e-", 2, g);
-    g->written += (2 + ft_strlen(g->expo));
-    ft_putstr(g->expo);
+    if (g->dot == 1 && g->prec == 0 && g->hashtag)
+    {
+        ft_putchar('.');
+        g->written++;
+    }
+    if ((ft_strcmp(dec, "inf") && ft_strcmp(dec, "nan")) != 0)
+    {
+        if (sign == 0 || sign == 2)
+            my_putstr("e+", 2, g);
+        else
+            my_putstr("e-", 2, g);
+        g->written += (2 + ft_strlen(g->expo));
+        ft_putstr(g->expo);
+    }
 }
