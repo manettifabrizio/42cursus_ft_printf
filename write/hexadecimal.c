@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:49:47 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/19 15:06:15 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/20 01:12:25 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void		hexa1(char *hexa, int length, t_lista *g)
 			putspace(g->width, g->prec, g);
 		}
 		else
-		{ 
+		{
 			putspace(g->width, g->prec, g);
 			puthashtag(hexa, g);
 			putzero(g->prec, length, g);
@@ -66,7 +66,7 @@ static void		hexa2(char *hexa, int length, t_lista *g)
 			puthexa(hexa, length, g);
 		}
 		else
-			hexa3(hexa, length, g);	
+			hexa3(hexa, length, g);
 	}
 	else
 	{

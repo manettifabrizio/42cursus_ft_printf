@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:11:56 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/03/31 16:33:49 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/20 01:16:35 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void		uinteger2(t_lista *g, unsigned int x, int length)
 				putspace(g->width, length, g);
 				my_putnbrx(x, g);
 			}
-		}			
+		}
 	}
 	else
 		my_putnbrx(x, g);

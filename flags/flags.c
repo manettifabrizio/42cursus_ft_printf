@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:00:33 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/19 14:49:18 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/20 00:57:46 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static void		check(t_lista *g)
 	if (g->precm == 1)
 		g->prec *= -1;
 	if ((g->prec >= 0 && g->conv != 's' && g->conv != 'c' \
- 		&& g->conv != 'p' && g->conv != '%' && g->conv != 'f' \
+		&& g->conv != 'p' && g->conv != '%' && g->conv != 'f' \
 		&& g->conv != 'e' && g->dot == 1) || g->dash == 1)
- 		g->zero = 0;
+		g->zero = 0;
 	if ((g->conv == 'f' || g->conv == 'e') && (g->dot == 0 || g->prec < 0))
 		g->prec = 6;
 }
@@ -53,7 +53,7 @@ static void		charactersflags(char *prt, int x, t_lista *g, va_list ap)
 			g->hashtag = 1;
 		else if (prt[x] == '.')
 			g->dot = 1;
-			x++;
+		x++;
 	}
 }
 
@@ -63,7 +63,6 @@ void			flags(const char *prt, t_lista *g, va_list ap)
 	char	*str;
 
 	x = 0;
-	
 	str = ft_strdup(prt);
 	while (prt[x] != '%')
 		x++;

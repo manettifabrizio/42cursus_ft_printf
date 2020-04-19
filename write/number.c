@@ -6,16 +6,16 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 16:37:00 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/03/31 16:48:34 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/20 01:08:51 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-void    number(va_list ap, t_lista *g)
+void	number(va_list ap, t_lista *g)
 {
-    int *x;
+	int *x;
 
-    x = va_arg(ap, int*);
-    *x = g->written;
+	x = va_arg(ap, int*);
+	*x = g->written;
 }

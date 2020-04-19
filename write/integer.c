@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:00:25 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/19 14:59:39 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/20 01:14:55 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void		integer3(int nbr, int length, t_lista *g)
 			my_putnbr(nbr, g);
 		}
 		else
-			integer4(nbr, length, g);		
+			integer4(nbr, length, g);
 	}
 	else
 	{

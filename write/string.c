@@ -6,13 +6,13 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 15:20:16 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/03/31 16:35:03 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/20 01:11:06 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-static void 	string3(char *str, int length, t_lista *g)
+static void		string3(char *str, int length, t_lista *g)
 {
 	if (g->width > length)
 	{
@@ -28,7 +28,7 @@ static void 	string3(char *str, int length, t_lista *g)
 		}
 	}
 	else
-		putstrm(str, g->prec, length, g);	
+		putstrm(str, g->prec, length, g);
 }
 
 static void		string2(int length, t_lista *g)
@@ -72,7 +72,7 @@ static void		string1(char *str, int length, t_lista *g)
 		my_putstr(str, length, g);
 }
 
-void	string(va_list ap, t_lista *g)
+void			string(va_list ap, t_lista *g)
 {
 	char	*str;
 	int		length;
@@ -91,6 +91,6 @@ void	string(va_list ap, t_lista *g)
 		string1(str, length, g);
 	else if (g->prec == 0 && g->dot == 1)
 		string2(length, g);
-	else 
+	else
 		string3(str, length, g);
 }

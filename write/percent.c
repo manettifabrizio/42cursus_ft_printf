@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/18 17:55:29 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/03/31 16:35:57 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/20 01:15:46 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ static void		percent1(t_lista *g)
 				putspace(g->width, 1, g);
 				write(1, "%", 1);
 			}
-		}			
+		}
 	}
 	else
 		write(1, "%", 1);
 }
 
-void    		percent(t_lista *g)
+void			percent(t_lista *g)
 {
 	percent1(g);
 	g->written++;
