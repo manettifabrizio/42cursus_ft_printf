@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 16:13:59 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/16 20:49:45 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/19 16:02:49 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ char	*doubletobinary(double nbr)
 	char			tmpbin[10];
 
 	i = (sizeof(double)) - 1;
-	if (!(binary = ft_memalloc(100 * sizeof(char)))) //free
+	if (!(binary = ft_memalloc(100 * sizeof(char))))
 		return (NULL);
-	ft_memcpy(memory, &nbr, sizeof(double)); //copia gli 8bit di memoria (double) in memory
+	ft_memcpy(memory, &nbr, sizeof(double));
 	while (i != -1)
 	{
 		binary = ft_strcat(binary, memorytobinary(memory[i], tmpbin));
@@ -112,14 +112,13 @@ void    convert_float(va_list ap, t_lista *g)
 	if (binary[0] == '1')
 		g->minus = 1;
 	decimal = ft_ftoa(nbr, binary, size);
-	if (ft_strchr(decimal, 'i') == 0 && ft_strchr(decimal, 'n') == 0) //taglio in base alla precisione
+	if (ft_strchr(decimal, 'i') == 0 && ft_strchr(decimal, 'n') == 0)
 	{
 		if (g->conv == 'f')
 			decimal = ft_bigint_round(decimal, g->prec, size);
 		decimal = deal_with_particular_cases(decimal);
 		g->inf = 0;
 	}
-	// printf("dec = %s\n", decimal);
 	which(decimal, size, g);
 	ft_memdel((void **)&binary);
 	ft_memdel((void **)&decimal);

@@ -6,13 +6,21 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:00:25 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/03/31 16:23:42 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/19 14:59:39 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-static void		integer1(t_lista *g, int nbr, int length)
+static void		integer2(int nbr, int length, t_lista *g)
+{
+	putblank(g);
+	minus(g);
+	putzero(g->prec, length, g);
+	my_putnbr(nbr, g);
+}
+
+static void		integer1(int nbr, int length, t_lista *g)
 {
 	if (g->width > g->prec)
 	{
@@ -34,15 +42,28 @@ static void		integer1(t_lista *g, int nbr, int length)
 		}
 	}
 	else
+		integer2(nbr, length, g);
+}
+
+static void		integer4(int nbr, int length, t_lista *g)
+{
+	if (g->dash == 1)
+	{
+		minus(g);
+		putblank(g);
+		my_putnbr(nbr, g);
+		putspace(g->width, length, g);
+	}
+	else
 	{
 		putblank(g);
+		putspace(g->width, length, g);
 		minus(g);
-		putzero(g->prec, length, g);
 		my_putnbr(nbr, g);
 	}
 }
 
-static void		integer2(t_lista *g, int nbr, int length)
+static void		integer3(int nbr, int length, t_lista *g)
 {
 	if (g->width > g->prec)
 	{
@@ -54,22 +75,7 @@ static void		integer2(t_lista *g, int nbr, int length)
 			my_putnbr(nbr, g);
 		}
 		else
-		{
-			if (g->dash == 1)
-			{
-				minus(g);
-				putblank(g);
-				my_putnbr(nbr, g);
-				putspace(g->width, length, g);
-			}
-			else
-			{
-				putblank(g);
-				putspace(g->width, length, g);
-				minus(g);
-				my_putnbr(nbr, g);
-			}
-		}			
+			integer4(nbr, length, g);		
 	}
 	else
 	{
@@ -89,7 +95,7 @@ void			integer(va_list ap, t_lista *g)
 	if (g->minus == 1 || g->plus == 1)
 		g->width--;
 	if (g->prec > length)
-		integer1(g, nbr, length);
+		integer1(nbr, length, g);
 	else
-		integer2(g, nbr, length);
+		integer3(nbr, length, g);
 }

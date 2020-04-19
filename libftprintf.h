@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:10:04 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/16 20:56:55 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/19 16:57:50 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int					ft_printf(const char *prt, ...);
 void				choice(char c, t_lista *g);
 
 void				flags(const char *prt, t_lista *g, va_list ap);
-char				*numbersandstar(char *prt, int *x, t_lista *g, va_list ap);
+char				*numbersandstar(char *prt, int x, t_lista *g, va_list ap);
 
 void				integer(va_list ap, t_lista *g);
 void				uinteger(va_list ap, t_lista *g);
@@ -112,7 +112,6 @@ void				string(va_list ap, t_lista *g);
 void				pointer(va_list ap, t_lista *g);
 void				hexadecimal(va_list ap, t_lista *g);
 void    			number(va_list ap, t_lista *g);
-void    			wfloat(va_list ap, t_lista *g);
 void    			percent(t_lista *g);
 void    			float_f(char *decimal, t_lista *g);
 void    			float_e(char *decimal, size_t size, t_lista *g);
@@ -125,10 +124,9 @@ void				putstrm(char *str, int prec, int x, t_lista *g);
 
 void    			putblank(t_lista *g);
 void    			puthashtag(char *hexa, t_lista *g);
-int     			divide(double nbr, int *i, int *f, int prec);
 void    			putfloat(char *dec, int length, t_lista *g);
+int     			set_length_e(char *decimal, t_lista *g);
 void    			putexpo(char *dec, int length, int sign, t_lista *g);
-char    			*my_strjoin(char *s1, char *s2);
 
 void				minus(t_lista *g);
 char				*up(char *str);
@@ -148,6 +146,10 @@ char				*ft_bigint_shift_right(char *str, size_t nb, size_t size);
 char				*ft_bigint_multiply_by_two(char *output, size_t size);
 char				*ft_bigint_divide_by_two(char *output, size_t size);
 char				*ft_bigint_round(char *dst, int precision, size_t size);
+
+char    			*dec_to_e(char *dec, int *sign, t_lista *g);
+char    			*re_dec_to_e(char *dec);
+char    			*zero_check(char *str, int len);
 
 void				my_putnbr(int nb, t_lista *g);
 void				my_putstr(char *str, int x, t_lista *g);

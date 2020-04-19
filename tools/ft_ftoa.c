@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 16:31:56 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/16 13:14:12 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/19 16:51:58 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static const char	*g_half_powers[] =
 	0,
 };
 
-char    *ft_mantissa(char *binary, char *decimal, size_t size)
+static char    *ft_mantissa(char *binary, char *decimal, size_t size)
 {
     int     x;
 
@@ -76,12 +76,12 @@ char    *ft_mantissa(char *binary, char *decimal, size_t size)
             decimal = ft_bigint_add(decimal, g_half_powers[x + 1], size);
         x++;
     }
-    if (ft_strcmp(decimal, "1") == 0) // caso in cui mantissa non ci sia 
+    if (ft_strcmp(decimal, "1") == 0)
 	    ft_strcpy(decimal, "0");
     return (decimal);
 }
 
-int     ft_exponent(char *binary, int offset)
+static int     ft_exponent(char *binary, int offset)
 {
     int     x;
     int     exponent;
@@ -100,7 +100,7 @@ int     ft_exponent(char *binary, int offset)
     return (exponent - (offset - 1));
 }
 
-char	*infinity_or_nan(char *output)
+static char		*infinity_or_nan(char *output)
 {
 	if (ft_strcmp(output, "0") == 0)
 	{
@@ -113,7 +113,7 @@ char	*infinity_or_nan(char *output)
 	return (output);
 }
 
-char	*final_str(char *output, int expo, size_t size)
+static char		*final_str(char *output, int expo, size_t size)
 {
 	while (expo != 0)
 	{
@@ -131,7 +131,7 @@ char	*final_str(char *output, int expo, size_t size)
 	return (output);
 }
 
-char    *ft_ftoa(double nbr, char *binary, size_t size)
+char    		*ft_ftoa(double nbr, char *binary, size_t size)
 {
     int     exponent;
     char    *decimal;

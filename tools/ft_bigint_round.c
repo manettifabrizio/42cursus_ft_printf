@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 10:54:41 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/17 17:20:28 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/19 16:49:50 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,17 @@ static char	*ft_banker_round(char *dst, int precision, int i, size_t size)
     j = i - 1;
     if (i < (int)size)
 	{
-		if (dst[i - 1] == '.') //se dst[i] è il numero dopo la virgola
+		if (dst[i - 1] == '.')
 		{
 			i--;
 			j--;
 		}
-		if ((dst[j] - '0') % 2 == 0) //nel caso in cui il numero prima di 5 sia pari mette lo spazio al 5
+		if ((dst[j] - '0') % 2 == 0)
 		{
 			dst[i] = 0;
 			return (dst);
 		}
-		else //se è dispari aggiunge 1 
+		else
 		{
 			to_add = get_to_add(precision);
 			dst = ft_bigint_add(dst, to_add, size);
@@ -87,16 +87,6 @@ static char	*ft_big_int_round_add(char *dst, int precision, int i, size_t size)
 	return (dst);
 }
 
-int	ft_bigint_get_index(char *str, char c)
-{
-	int i;
-
-	i = 0;
-	while (str[i] && str[i] != c)
-		i++;
-	return (i);
-}
-
 char		*ft_bigint_round(char *dst, int precision, size_t size)
 {
 	int		i;
@@ -107,7 +97,7 @@ char		*ft_bigint_round(char *dst, int precision, size_t size)
 		return (dst);
 	precision_cpy = precision;
 	dst = ft_strcmp(dst, ".") == 0 ? ft_strjoin("0", dst) : dst;
-	i = ft_bigint_get_index(dst, '.');
+	i = getindex(dst, '.');
 	if (dst[i] == 0)
 		dst[i] = '.'; 
 	while (dst[++i] && precision != 0)

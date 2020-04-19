@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 21:17:38 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/16 19:51:07 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/19 15:58:54 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,33 @@ void    putfloat(char *dec, int length, t_lista *g)
     }
 }
 
+int     set_length_e(char *decimal, t_lista *g)
+{
+    int i;
+    int length;
+
+	i = 0;
+    g->expo = ft_strlen(g->expo) == 1 ? ft_strjoin("0", g->expo) : g->expo;
+    while (decimal[i] != '.' && decimal[i])
+		i++;
+    i += 2;
+    if (g->dot == 1 && g->prec == 0)
+        length = i + g->hashtag + ft_strlen(g->expo);
+    else
+	    length = i + 1 + g->prec + ft_strlen(g->expo);
+    return (length);
+}
+
 void    putexpo(char *dec, int length, int sign, t_lista *g)
 {
     int i;
 
     i = 0;
-    // printf("lengthb = %d\n", length);
     if ((ft_strcmp(dec, "inf") && ft_strcmp(dec, "nan")) != 0)
         length -= (2 + ft_strlen(g->expo));
-    // printf("lengtha = %d\n", length);
-    // printf("dec = %s\n", dec);
     while (i < length && dec[i])
     {
-        // printf("dec[%d] = %c\n", i, dec[i]);
-        ft_putchar(dec[i]);
-        i++;
+        ft_putchar(dec[i++]);
         g->written++;
     }
     if (g->dot == 1 && g->prec == 0 && g->hashtag)

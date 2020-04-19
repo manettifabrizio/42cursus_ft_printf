@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:08:48 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/16 21:07:30 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/19 13:19:53 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,10 @@
 
 void		choice(char c, t_lista *g)
 {
-	if (c == 'd')
-		g->conv = 'd';
-	else if (c == 's')
-		g->conv = 's';
-	else if (c == 'c')
-		g->conv = 'c';
-	else if (c == 'p')
-		g->conv = 'p';
-	else if (c == 'i')
-		g->conv = 'i';
-	else if (c == 'u')
-		g->conv = 'u';
-	else if (c == 'x')
-		g->conv = 'x';
-	else if (c == 'X')
-		g->conv = 'X';
-	else if (c == '%')
-	 	g->conv = '%';
-	else if (c == 'n')
-		g->conv = 'n';
-	else if (c == 'f')
-	 	g->conv = 'f';
-	else if (c == 'e')
-		g->conv = 'e';
-	// else if (c == 'g')
-	// 	g->conv = 'g';
+	if (c == 'd' || c == 'i' || c == 'u' || c == 'c' || c == 's' || c == 'p' \
+		|| c == 'x' || c == 'X' || c == '%' || c == 'n' || c == 'f' \
+			|| c == 'e')
+		g->conv = c;
 }
 
 static int		decide(t_lista *g, va_list ap)
@@ -61,7 +39,7 @@ static int		decide(t_lista *g, va_list ap)
 		hexadecimal(ap, g);
 	else if (g->conv == 'n')
 		number(ap, g);
-	else if (g->conv == 'f' || g->conv == 'e' || g->conv == 'g')
+	else if (g->conv == 'f' || g->conv == 'e')
 		convert_float(ap, g);
 	else if (g->conv == '%')
 		percent(g);
@@ -108,14 +86,12 @@ int				ft_printf(const char *prt, ...)
 			print(prt, &i, &g);
 		else
 		{
-			//printf("prt = %s\n", prt);
 			flagbegin(&g);
 			x = setx(prt, i, &g);
 			flags(prt, &g, ap);
 			decide(&g, ap);
 			prt = ft_substr(prt, x, ft_strlen(prt) - x);
 			i = 0;
-			//printf("dash = %d\nplus = %d\nspace = %d\nzero = %d\nhashtag = %d\nwidth = %d\ndot = %d\nprec = %d\nminus = %d\nconv = %c\n", g.dash, g.plus, g.space, g.zero, g.hashtag, g.width, g.dot, g.prec, g.minus, g.conv);
 		}
 	}
 	va_end(ap);

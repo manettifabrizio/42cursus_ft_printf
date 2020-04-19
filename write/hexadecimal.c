@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:49:47 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/03/31 16:23:36 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/19 15:06:15 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,22 @@ static void		hexa1(char *hexa, int length, t_lista *g)
 	}
 }
 
+static void		hexa3(char *hexa, int length, t_lista *g)
+{
+	if (g->dash == 1)
+	{
+		puthashtag(hexa, g);
+		puthexa(hexa, length, g);
+		putspace(g->width, length, g);
+	}
+	else
+	{
+		putspace(g->width, length, g);
+		puthashtag(hexa, g);
+		puthexa(hexa, length, g);
+	}
+}
+
 static void		hexa2(char *hexa, int length, t_lista *g)
 {
 	if (g->width > g->prec)
@@ -50,20 +66,7 @@ static void		hexa2(char *hexa, int length, t_lista *g)
 			puthexa(hexa, length, g);
 		}
 		else
-		{
-			if (g->dash == 1)
-			{
-				puthashtag(hexa, g);
-				puthexa(hexa, length, g);
-				putspace(g->width, length, g);
-			}
-			else
-			{
-				putspace(g->width, length, g);
-				puthashtag(hexa, g);
-				puthexa(hexa, length, g);
-			}
-		}			
+			hexa3(hexa, length, g);	
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 17:50:17 by fmanetti          #+#    #+#              #
-#    Updated: 2020/04/10 21:03:43 by fmanetti         ###   ########.fr        #
+#    Updated: 2020/04/19 17:44:26 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,21 +73,31 @@ OBJB		= $(BONUS:%.c=%.o) $(OBJ)
 
 FLAGS 		= -Wall -Wextra -Werror
 
-all: $(NAME) $(SOURCE)
+all: $(NAME)
+
+%.o: %.c
+	@printf "[ libft ] Compiling.  \r"
+	@gcc $(FLAGS) -c -g $< -o $@
+	@printf "[ libft ] Compiling . \r"
+	@printf "[ libft ] Compiling  .\r"
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@printf "\033[0;32m[ libft ] Compiled Successfully\n\n\033[0m"
+	@ar rc $(NAME) $^
+	@ranlib $(NAME)
+	@printf "\033[0;32m[ $(NAME) ] Created Successfully\n\n\033[0m" $(SUCCESS)
 
 bonus: $(OBJB)
-	ar rc $(NAME) $(OBJB)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJB)
+	@ranlib $(NAME)
+	@printf "\033[0;32m[ $(NAME) + bonus] Created Successfully\n\n\033[0m" $(SUCCESS)
 
 clean:
-	/bin/rm -f $(OBJ) $(OBJB)
+	@/bin/rm -f $(OBJ) $(OBJB)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
+	@printf "\033[0;31m[ $(NAME) ] removed\n\n\033[0m"
 
 re: fclean all
 

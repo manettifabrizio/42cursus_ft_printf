@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 18:13:16 by fmanetti          #+#    #+#              #
-#    Updated: 2020/04/15 11:22:51 by fmanetti         ###   ########.fr        #
+#    Updated: 2020/04/19 17:44:20 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SOURCE = 	ft_printf.c \
 			flags/flags.c \
 			flags/flagstools.c \
 			tools/convert_float.c \
+			tools/dec_to_e.c \
 			tools/tools.c \
 			tools/tools1.c \
 			tools/tools2.c \
@@ -47,28 +48,29 @@ FLAGS 		= -Wall -Wextra -Werror
 all: $(NAME)
 
 %.o: %.c
-	@printf "[ft_printf] Compiling.  \r"
-	@gcc $(FLAGS) -c $< -o $@
-	@printf "[ft_printf] Compiling . \r"
-	@printf "[ft_printf] Compiling  .\r"
+	@printf "[ ft_printf ] Compiling.  \r"
+	@gcc $(FLAGS) -c -g $< -o $@
+	@printf "[ ft_printf ] Compiling . \r"
+	@printf "[ ft_printf ] Compiling  .\r"
 
 $(NAME): $(OBJ)
+	@printf "\033[0;32m[ ft_printf ] Compiled Successfully\n\n\033[0m"
 	@make -C libft/
 	@cp libft/libft.a ./$(NAME)
 	@ar rc $(NAME) $^
 	@ranlib $(NAME)
-	@echo "Compiling & indexing" [ $(NAME) ] $(SUCCESS)
+	@printf "\033[0;32m[ $(NAME) ] Created Successfully\n\n\033[0m" $(SUCCESS)
 
 clean:
 	@make clean -C libft/
 	@/bin/rm -f $(OBJ)
-	@printf "[ft_printf] Removed object files!\n"
+	@printf "\033[0;31m\nObject files removed\n\n\033[0m"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
 	@make fclean -C libft/
-	@echo "Cleaning" [ $(NAME) ] "..." $(OK)
+	@printf "\033[0;31m[ $(NAME) ] removed\n\n\033[0m"
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

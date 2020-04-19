@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:00:33 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/16 11:31:59 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/19 14:49:18 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,12 @@ static void		check(t_lista *g)
 
 static void		charactersflags(char *prt, int x, t_lista *g, va_list ap)
 {
-	int y;
-
 	while (prt[x] != g->conv && prt[x])
 	{
-		y = 0;
 		if ((prt[x] >= '1' && prt[x] <= '9') || prt[x] == '*')
 		{
-			prt = numbersandstar(prt, &x, g, ap);
-			y++;
+			prt = numbersandstar(prt, x, g, ap);
+			x = -1;
 		}
 		else if (prt[x] == '-' && g->dot == 0)
 			g->dash = 1;
@@ -55,8 +52,7 @@ static void		charactersflags(char *prt, int x, t_lista *g, va_list ap)
 		else if (prt[x] == '#')
 			g->hashtag = 1;
 		else if (prt[x] == '.')
-		 	g->dot = 1;
-		if (y == 0)
+			g->dot = 1;
 			x++;
 	}
 }
@@ -74,5 +70,4 @@ void			flags(const char *prt, t_lista *g, va_list ap)
 	x++;
 	charactersflags(str, x, g, ap);
 	check(g);
-	//printf("dash = %d\nplus = %d\nspace = %d\nzero = %d\nhashtag = %d\nwidth = %d\ndot = %d\nprec = %d\nminus = %d\nconv = %c\n", g->dash, g->plus, g->space, g->zero, g->hashtag, g->width, g->dot, g->prec, g->minus, g->conv);
 }

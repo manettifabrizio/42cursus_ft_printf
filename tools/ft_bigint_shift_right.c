@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 16:52:52 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/16 12:45:26 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/19 16:05:56 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,3 @@ char	*ft_bigint_shift_right(char *str, size_t nb, size_t size)
 	}
 	return (str);
 }
-

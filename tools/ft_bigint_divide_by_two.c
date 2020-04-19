@@ -6,16 +6,16 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 21:51:34 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/16 13:11:29 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/19 16:12:22 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
 static char	ft_get_next_digit(char digit, int next_is_even)
-{ //ha catalogato i primi 20 casi poi si ripetono per la periodicità
-	if (next_is_even == 0) //se pari
-	{ // 0/2 o 1/2 = 0 o 0,5 ...
+{
+	if (next_is_even == 0)
+	{
 		if (digit == '0' || digit == '1')
 			return ('0');
 		if (digit == '2' || digit == '3')
@@ -73,7 +73,6 @@ char		*ft_bigint_divide_by_two(char *output, size_t size)
 	int		finished;
 	int		even;
 
-	// printf("before = %s\n", output);
 	output = ft_bigint_shift_right(output, 1, size);
 	output[0] = '0';
 	i = 0;
@@ -83,9 +82,8 @@ char		*ft_bigint_divide_by_two(char *output, size_t size)
 	{
 		even = (output[i] - '0') % 2;
 		finished = is_over(output, &i, &j, size);
-		output[i] = ft_get_next_digit(output[j], even); //sostituisce i in base 
+		output[i] = ft_get_next_digit(output[j], even);
 		i = j;
-		// printf("after = %s\n", output);
 	}
 	return (ft_bigint_trim(output));
 }
