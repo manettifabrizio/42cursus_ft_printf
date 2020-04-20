@@ -19,12 +19,12 @@ static int		is_valid_digit(char c)
 	return (0);
 }
 
-static int		set_len(char* output, size_t len, size_t size)
+static int		set_len(char *output, size_t len, size_t size)
 {
 	while (output[len])
 		len++;
 	if (len == size)
-	 	len = size - 1;
+		len = size - 1;
 	return (len);
 }
 

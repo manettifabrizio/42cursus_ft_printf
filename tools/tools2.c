@@ -42,9 +42,8 @@ char	*up(char *str)
 int		setx(const char *prt, int x, t_lista *g)
 {
 	x++;
-
 	while (g->conv == 'a' && prt[x] != '\0')
-	{	
+	{
 		choice(prt[x], g);
 		x++;
 	}
@@ -53,16 +52,16 @@ int		setx(const char *prt, int x, t_lista *g)
 
 int		width(int x, t_lista *g)
 {
-	int y;
-	long z;
+	int		y;
+	long	z;
 
 	z = x;
 	y = 0;
 	if (z == 0)
-	{	
+	{
 		if (g->dot == 1 && g->prec == 0)
 			return (0);
-		g->written++;	
+		g->written++;
 		return (1);
 	}
 	if (z < 0)
@@ -85,10 +84,10 @@ int		widthu(unsigned int x, t_lista *g)
 
 	y = 0;
 	if (x == 0)
-	{	
+	{
 		if (g->dot == 1 && g->prec == 0)
 			return (0);
-		g->written++;	
+		g->written++;
 		return (1);
 	}
 	while (x > 0)

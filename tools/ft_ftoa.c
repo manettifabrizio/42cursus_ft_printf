@@ -6,17 +6,35 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 16:31:56 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/19 16:51:58 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/20 10:14:26 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-static const char	*g_half_powers[] = 
+static const char	*g_half_powers[] =
 {
-	P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15,
-	P16, P17, P18, P19,
-    P20,
+	P0,
+	P1,
+	P2,
+	P3,
+	P4,
+	P5,
+	P6,
+	P7,
+	P8,
+	P9,
+	P10,
+	P11,
+	P12,
+	P13,
+	P14,
+	P15,
+	P16,
+	P17,
+	P18,
+	P19,
+	P20,
 	P21,
 	P22,
 	P23,
@@ -64,40 +82,40 @@ static const char	*g_half_powers[] =
 	0,
 };
 
-static char    *ft_mantissa(char *binary, char *decimal, size_t size)
+static char		*ft_mantissa(char *binary, char *decimal, size_t size)
 {
-    int     x;
+	int x;
 
-    x = 0;
-    ft_strcpy(decimal, "1");
-    while (binary[x] && x < 64)
-    {
-        if (binary[x] == '1')
-            decimal = ft_bigint_add(decimal, g_half_powers[x + 1], size);
-        x++;
-    }
-    if (ft_strcmp(decimal, "1") == 0)
-	    ft_strcpy(decimal, "0");
-    return (decimal);
+	x = 0;
+	ft_strcpy(decimal, "1");
+	while (binary[x] && x < 64)
+	{
+		if (binary[x] == '1')
+			decimal = ft_bigint_add(decimal, g_half_powers[x + 1], size);
+		x++;
+	}
+	if (ft_strcmp(decimal, "1") == 0)
+		ft_strcpy(decimal, "0");
+	return (decimal);
 }
 
-static int     ft_exponent(char *binary, int offset)
+static int		ft_exponent(char *binary, int offset)
 {
-    int     x;
-    int     exponent;
-    int     poweroftwo;
+	int		x;
+	int		exponent;
+	int		poweroftwo;
 
-    x = 1;
-    exponent = 0;
-    poweroftwo = offset;
-    while (binary[x] && x < 12)
-    {
-        if (binary[x] == '1')
-            exponent += poweroftwo;
-        poweroftwo /= 2;
-        x++;
-    }
-    return (exponent - (offset - 1));
+	x = 1;
+	exponent = 0;
+	poweroftwo = offset;
+	while (binary[x] && x < 12)
+	{
+		if (binary[x] == '1')
+			exponent += poweroftwo;
+		poweroftwo /= 2;
+		x++;
+	}
+	return (exponent - (offset - 1));
 }
 
 static char		*infinity_or_nan(char *output)
@@ -131,16 +149,16 @@ static char		*final_str(char *output, int expo, size_t size)
 	return (output);
 }
 
-char    		*ft_ftoa(double nbr, char *binary, size_t size)
+char			*ft_ftoa(double nbr, char *binary, size_t size)
 {
-    int     exponent;
-    char    *decimal;
+	int		exponent;
+	char	*decimal;
 
-    exponent = ft_exponent(binary, 1024); 
+	exponent = ft_exponent(binary, 1024);
 	if (!(decimal = (char *)ft_memalloc(size * sizeof(char))))
 		return (NULL);
-    decimal = ft_mantissa(binary + 12, decimal, size);
-    if (nbr == 1)
+	decimal = ft_mantissa(binary + 12, decimal, size);
+	if (nbr == 1)
 		decimal = ft_strcpy(decimal, "1.");
 	if (nbr == 0)
 		decimal = ft_strcpy(decimal, "0.");
@@ -148,5 +166,5 @@ char    		*ft_ftoa(double nbr, char *binary, size_t size)
 		decimal = infinity_or_nan(decimal);
 	else if (exponent != -1022)
 		decimal = final_str(decimal, exponent, size);
-    return (decimal);
+	return (decimal);
 }

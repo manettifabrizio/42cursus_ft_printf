@@ -12,7 +12,7 @@
 
 #include "../libftprintf.h"
 
-char	*bigintrimright(char *str)
+char			*bigintrimright(char *str)
 {
 	size_t i;
 	size_t len;
@@ -29,7 +29,7 @@ char	*bigintrimright(char *str)
 	return (str);
 }
 
-static char	*bigintrimleft(char *str)
+static char		*bigintrimleft(char *str)
 {
 	size_t nb;
 	size_t i;
@@ -55,7 +55,7 @@ static char	*bigintrimleft(char *str)
 	return (str);
 }
 
-char		*ft_bigint_trim(char *str)
+char			*ft_bigint_trim(char *str)
 {
 	str = bigintrimleft(str);
 	str = bigintrimright(str);

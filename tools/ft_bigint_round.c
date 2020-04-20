@@ -37,8 +37,9 @@ static char	*ft_banker_round(char *dst, int precision, int i, size_t size)
 {
 	int		j;
 	char	*to_add;
-    j = i - 1;
-    if (i < (int)size)
+
+	j = i - 1;
+	if (i < (int)size)
 	{
 		if (dst[i - 1] == '.')
 		{
@@ -99,13 +100,13 @@ char		*ft_bigint_round(char *dst, int precision, size_t size)
 	dst = ft_strcmp(dst, ".") == 0 ? ft_strjoin("0", dst) : dst;
 	i = getindex(dst, '.');
 	if (dst[i] == 0)
-		dst[i] = '.'; 
+		dst[i] = '.';
 	while (dst[++i] && precision != 0)
 		precision--;
 	if (dst[i] == 0)
 		return (ft_big_int_round_add(dst, precision, i, size));
 	else if (dst[i] == '5' && dst[i + 1] == 0)
-	 	return (ft_banker_round(dst, precision_cpy, i, size));
+		return (ft_banker_round(dst, precision_cpy, i, size));
 	else if (dst[i] < '5')
 		return (ft_big_int_round_inf(dst, precision_cpy, i, size));
 	to_add = get_to_add(precision_cpy);

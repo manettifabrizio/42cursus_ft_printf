@@ -6,18 +6,18 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 16:13:59 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/19 16:02:49 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/20 10:31:39 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-char	*memorytobinary(unsigned char i, char *binary)
+char			*memorytobinary(unsigned char i, char *binary)
 {
 	int		x;
 	char	tmp;
 	char	base[3];
-	
+
 	x = 0;
 	ft_strcpy(base, "01");
 	while (i != 0)
@@ -40,11 +40,11 @@ char	*memorytobinary(unsigned char i, char *binary)
 	return (binary);
 }
 
-char	*doubletobinary(double nbr)
+char			*doubletobinary(double nbr)
 {
 	int				i;
-	char 			*binary;
-	unsigned char 	memory[sizeof(double) + 1];
+	char			*binary;
+	unsigned char	memory[sizeof(double) + 1];
 	char			tmpbin[10];
 
 	i = (sizeof(double)) - 1;
@@ -57,14 +57,6 @@ char	*doubletobinary(double nbr)
 		i--;
 	}
 	return (binary);
-}
-
-void	which(char *decimal, size_t size, t_lista *g)
-{
-	if (g->conv == 'f')
-		float_f(decimal, g);
-	if (g->conv == 'e')
-		float_e(decimal, size, g);
 }
 
 static char		*deal_with_particular_cases(char *output)
@@ -98,15 +90,15 @@ static size_t	ft_nblen(double nb)
 	return (nblen);
 }
 
-void    convert_float(va_list ap, t_lista *g)
+void			convert_float(va_list ap, t_lista *g)
 {
-    double  nbr;
+	double	nbr;
 	size_t	size;
 	char	*binary;
 	char	*decimal;
 
-    nbr = va_arg(ap, double);
-	size = g->prec < 40 ? 40 : g->prec + 5; 
+	nbr = va_arg(ap, double);
+	size = g->prec < 40 ? 40 : g->prec + 5;
 	size += ft_nblen(nbr);
 	binary = doubletobinary(nbr);
 	if (binary[0] == '1')

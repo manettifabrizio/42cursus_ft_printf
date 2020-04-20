@@ -6,13 +6,13 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:08:48 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/19 13:19:53 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/20 10:05:55 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void		choice(char c, t_lista *g)
+void			choice(char c, t_lista *g)
 {
 	if (c == 'd' || c == 'i' || c == 'u' || c == 'c' || c == 's' || c == 'p' \
 		|| c == 'x' || c == 'X' || c == '%' || c == 'n' || c == 'f' \
@@ -23,18 +23,18 @@ void		choice(char c, t_lista *g)
 static int		decide(t_lista *g, va_list ap)
 {
 	int		x;
-	
+
 	x = 0;
 	if (g->conv == 'd' || g->conv == 'i')
 		integer(ap, g);
 	else if (g->conv == 'u')
 		uinteger(ap, g);
 	else if (g->conv == 'c')
-	 	character(ap, g);
+		character(ap, g);
 	else if (g->conv == 's')
-	 	string(ap, g);
+		string(ap, g);
 	else if (g->conv == 'p')
-	 	pointer(ap, g);
+		pointer(ap, g);
 	else if (g->conv == 'x' || g->conv == 'X')
 		hexadecimal(ap, g);
 	else if (g->conv == 'n')
@@ -74,8 +74,8 @@ int				ft_printf(const char *prt, ...)
 {
 	int			i;
 	int			x;
-	va_list 	ap;
-	t_lista 	g;
+	va_list		ap;
+	t_lista		g;
 
 	i = 0;
 	va_start(ap, prt);
@@ -95,5 +95,5 @@ int				ft_printf(const char *prt, ...)
 		}
 	}
 	va_end(ap);
-	return(g.written);
+	return (g.written);
 }

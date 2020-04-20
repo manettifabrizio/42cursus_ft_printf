@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conv_hexa.c                                     :+:      :+:    :+:   */
+/*   tools3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/22 18:40:54 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/03/22 18:53:34 by fmanetti         ###   ########.fr       */
+/*   Created: 2020/04/20 10:23:31 by fmanetti          #+#    #+#             */
+/*   Updated: 2020/04/20 10:29:37 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
+
+void					which(char *decimal, size_t size, t_lista *g)
+{
+	if (g->conv == 'f')
+		float_f(decimal, g);
+	if (g->conv == 'e')
+		float_e(decimal, size, g);
+}
 
 static unsigned long	ft_recursive_power(int nb, int power)
 {
@@ -22,13 +30,13 @@ static unsigned long	ft_recursive_power(int nb, int power)
 		return (1);
 }
 
-char			*ft_conv_hexa(long i)
+char					*ft_conv_hexa(long i)
 {
-	char					*str;
-	int						x;
-	int						j;
-	int						len;
-	char					*base;
+	char	*str;
+	int		x;
+	int		j;
+	int		len;
+	char	*base;
 
 	base = "0123456789abcdef";
 	len = 1;
@@ -48,13 +56,13 @@ char			*ft_conv_hexa(long i)
 	return (str);
 }
 
-char			*ft_conv_hexa2(unsigned int i)
+char					*ft_conv_hexa2(unsigned int i)
 {
-	char					*str;
-	int						x;
-	int						j;
-	int						len;
-	char					*base;
+	char	*str;
+	int		x;
+	int		j;
+	int		len;
+	char	*base;
 
 	base = "0123456789abcdef";
 	len = 1;

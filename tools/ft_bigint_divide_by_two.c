@@ -51,7 +51,7 @@ static int	is_over(char *output, size_t *i, size_t *j, size_t size)
 		(*i)++;
 	}
 	(*j)++;
-	while (*j < size - 1 &&(ft_isdigit(output[*j]) == 0) && output[*j])
+	while (*j < size - 1 && (ft_isdigit(output[*j]) == 0) && output[*j])
 	{
 		output[*j - 1] = output[*j];
 		(*i)++;

@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 18:13:16 by fmanetti          #+#    #+#              #
-#    Updated: 2020/04/19 17:44:20 by fmanetti         ###   ########.fr        #
+#    Updated: 2020/04/20 10:29:33 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SOURCE = 	ft_printf.c \
 			tools/tools.c \
 			tools/tools1.c \
 			tools/tools2.c \
-			tools/ft_conv_hexa.c \
+			tools/tools3.c \
 			tools/ft_ftoa.c \
 			tools/ft_bigint_add.c \
 			tools/ft_bigint_trim.c \

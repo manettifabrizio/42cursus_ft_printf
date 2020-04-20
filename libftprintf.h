@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:10:04 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/19 16:57:50 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/20 10:29:11 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ typedef	struct		s_lista
 	int				precm;
 	int				width;
 	int				minus;
-	int 			inf;
+	int				inf;
 	char			*expo;
 	char			conv;
 }					t_lista;
@@ -111,10 +111,10 @@ void				character(va_list ap, t_lista *g);
 void				string(va_list ap, t_lista *g);
 void				pointer(va_list ap, t_lista *g);
 void				hexadecimal(va_list ap, t_lista *g);
-void    			number(va_list ap, t_lista *g);
-void    			percent(t_lista *g);
-void    			float_f(char *decimal, t_lista *g);
-void    			float_e(char *decimal, size_t size, t_lista *g);
+void				number(va_list ap, t_lista *g);
+void				percent(t_lista *g);
+void				float_f(char *decimal, t_lista *g);
+void				float_e(char *decimal, size_t size, t_lista *g);
 
 void				putspace(int x, int y, t_lista *g);
 void				putzero(int x, int y, t_lista *g);
@@ -122,11 +122,11 @@ void				my_putnbrx(unsigned int nb, t_lista *g);
 void				puthexa(char *str, int y, t_lista *g);
 void				putstrm(char *str, int prec, int x, t_lista *g);
 
-void    			putblank(t_lista *g);
-void    			puthashtag(char *hexa, t_lista *g);
-void    			putfloat(char *dec, int length, t_lista *g);
-int     			set_length_e(char *decimal, t_lista *g);
-void    			putexpo(char *dec, int length, int sign, t_lista *g);
+void				putblank(t_lista *g);
+void				puthashtag(char *hexa, t_lista *g);
+void				putfloat(char *dec, int length, t_lista *g);
+int					set_length_e(char *decimal, t_lista *g);
+void				putexpo(char *dec, int length, int sign, t_lista *g);
 
 void				minus(t_lista *g);
 char				*up(char *str);
@@ -134,12 +134,14 @@ int					setx(const char *prt, int x, t_lista *g);
 int					width(int x, t_lista *g);
 int					widthu(unsigned int x, t_lista *g);
 
+void				which(char *decimal, size_t size, t_lista *g);
 char				*ft_conv_hexa(long y);
 char				*ft_conv_hexa2(unsigned int i);
 
-void    			convert_float(va_list ap, t_lista *g);
-char    			*ft_ftoa(double nbr, char *binary, size_t size);
-char    			*ft_bigint_add(char *decimal, const char *toadd, size_t size);
+void				convert_float(va_list ap, t_lista *g);
+char				*ft_ftoa(double nbr, char *binary, size_t size);
+char				*ft_bigint_add(char *decimal, const char *toadd, \
+						size_t size);
 int					getindex(char *str, char c);
 char				*ft_bigint_trim(char *str);
 char				*ft_bigint_shift_right(char *str, size_t nb, size_t size);
@@ -147,9 +149,9 @@ char				*ft_bigint_multiply_by_two(char *output, size_t size);
 char				*ft_bigint_divide_by_two(char *output, size_t size);
 char				*ft_bigint_round(char *dst, int precision, size_t size);
 
-char    			*dec_to_e(char *dec, int *sign, t_lista *g);
-char    			*re_dec_to_e(char *dec);
-char    			*zero_check(char *str, int len);
+char				*dec_to_e(char *dec, int *sign, t_lista *g);
+char				*re_dec_to_e(char *dec);
+char				*zero_check(char *str, int len);
 
 void				my_putnbr(int nb, t_lista *g);
 void				my_putstr(char *str, int x, t_lista *g);
