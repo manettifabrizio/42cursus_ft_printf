@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/19 15:11:59 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/22 14:19:28 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/23 00:34:34 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char			*zero_check(char *str, int len)
 	y = 0;
 	printf("str1 = %p\n", str);
 	if (str[0] == '.')
-		str = ft_strjoin("0", str);
+		str = my_strjoin("0", str);
 	printf("str2 = %p\n", str);
 	while (str[y] != '.' && str[y])
 		y++;
@@ -32,7 +32,8 @@ char			*zero_check(char *str, int len)
 		x++;
 	}
 	str1[x] = '\0';
-	str = ft_strjoin(str, str1);
+	printf("astr1 = %p\n", str1);
+	str = my_strjoin_r(str, str1);
 	printf("str3 = %p\n", str);
 	return (str);
 }
@@ -79,6 +80,7 @@ char			*re_dec_to_e(char *dec)
 
 static void		set_expo(int x, int y, int *sign, t_lista *g)
 {
+	printf("expo0 = %p\n", g->expo);
 	if ((*sign) == 1)
 		g->expo = ft_itoa(y);
 	else if ((*sign) == 0)

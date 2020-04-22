@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 21:34:14 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/20 01:06:45 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/23 00:33:47 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void			float_e(char *dec, size_t size, t_lista *g)
 {
 	int	sign;
 	int length;
+	char *tmp;
 
 	sign = 0;
 	if (ft_strcmp(dec, "inf") == 0 || ft_strcmp(dec, "nan") == 0)
@@ -78,16 +79,26 @@ void			float_e(char *dec, size_t size, t_lista *g)
 		dec = ft_bigint_round(dec, g->prec, size);
 		if (dec[0] != '.' && dec[1] != ('.' && '\0'))
 		{
+			printf("expo1 = %p\n", g->expo);
 			if (sign == 0 || sign == 2)
-				g->expo = ft_itoa(ft_atoi(g->expo) + (getindex(dec, '.') - 1));
+				tmp = ft_itoa(ft_atoi(g->expo) + (getindex(dec, '.') - 1));
 			else
-				g->expo = ft_itoa(ft_atoi(g->expo) - (getindex(dec, '.') - 1));
+				tmp = ft_itoa(ft_atoi(g->expo) - (getindex(dec, '.') - 1));
+			free((void*)g->expo);
+			g->expo = tmp;
+			printf("expo2 = %p tmp = %p\n", g->expo, tmp);
 			re_dec_to_e(dec);
 		}
+		printf("dec1 = %p\n", dec);
 		dec = zero_check(dec, g->prec);
+		printf("dec2 = %p\n", dec);
 		length = set_length_e(dec, g);
 	}
 	if (g->minus == 1 || g->plus == 1)
 		g->width--;
 	write_e(dec, length, sign, g);
+	printf("expo5 = %p\n", g->expo);
+	if (ft_strcmp(dec, "inf") != 0 && ft_strcmp(dec, "nan") != 0)
+		free((void*)g->expo);
+	free((void*)dec);
 }

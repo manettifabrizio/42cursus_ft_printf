@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 21:21:47 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/20 01:00:04 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/23 00:36:41 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,5 @@ void			float_f(char *decimal, t_lista *g)
 	if (g->minus == 1 || g->plus == 1)
 		g->width--;
 	write_f(decimal, length, g);
+	free((void*)decimal);
 }

@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 21:17:38 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/19 15:58:54 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/23 00:34:52 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ int		set_length_e(char *decimal, t_lista *g)
 	int length;
 
 	i = 0;
-	g->expo = ft_strlen(g->expo) == 1 ? ft_strjoin("0", g->expo) : g->expo;
+	printf("expo3 = %p\n", g->expo);
+	g->expo = ft_strlen(g->expo) == 1 ? my_strjoin("0", g->expo) : g->expo;
+	printf("expo4 = %p\n", g->expo);
 	while (decimal[i] != '.' && decimal[i])
 		i++;
 	i += 2;

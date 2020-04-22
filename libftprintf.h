@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:10:04 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/22 13:11:41 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:13:12 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,8 @@ void				which(char *decimal, size_t size, t_lista *g);
 char				*ft_conv_hexa(long y);
 char				*ft_conv_hexa2(unsigned int i);
 void				my_substr(char *s, unsigned int start, size_t len);
+char				*my_strjoin(char *s1, char *s2);
+char				*my_strjoin_r(char *s1, char *s2);
 
 void				convert_float(va_list ap, t_lista *g);
 char				*ft_ftoa(double nbr, char *binary, size_t size);

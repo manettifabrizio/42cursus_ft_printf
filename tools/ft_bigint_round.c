@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 10:54:41 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/22 13:52:37 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/22 20:15:38 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,9 @@ char		*ft_bigint_round(char *dst, int precision, size_t size)
 	if (precision < 0 || dst == NULL)
 		return (dst);
 	precision_cpy = precision;
-	dst = ft_strcmp(dst, ".") == 0 ? ft_strjoin("0", dst) : dst;
+	// printf("dst1 = %p\n", dst);
+	//dst = ft_strcmp(dst, ".") == 0 ? my_strjoin("0", dst) : dst;
+	//printf("dst2 = %p\n", dst);
 	i = getindex(dst, '.');
 	if (dst[i] == 0)
 		dst[i] = '.';
