@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 17:50:17 by fmanetti          #+#    #+#              #
-#    Updated: 2020/04/19 17:44:26 by fmanetti         ###   ########.fr        #
+#    Updated: 2020/04/20 23:43:38 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,22 +82,22 @@ all: $(NAME)
 	@printf "[ libft ] Compiling  .\r"
 
 $(NAME): $(OBJ)
-	@printf "\033[0;32m[ libft ] Compiled Successfully\n\n\033[0m"
+	@printf "\033[0;32m[ libft ] Compiled Successfully\n\033[0m"
 	@ar rc $(NAME) $^
 	@ranlib $(NAME)
-	@printf "\033[0;32m[ $(NAME) ] Created Successfully\n\n\033[0m" $(SUCCESS)
+	@printf "\033[0;32m[ $(NAME) ] Created Successfully\n\033[0m" $(SUCCESS)
 
 bonus: $(OBJB)
 	@ar rc $(NAME) $(OBJB)
 	@ranlib $(NAME)
-	@printf "\033[0;32m[ $(NAME) + bonus] Created Successfully\n\n\033[0m" $(SUCCESS)
+	@printf "\033[0;32m[ $(NAME) + bonus] Created Successfully\n\033[0m" $(SUCCESS)
 
 clean:
 	@/bin/rm -f $(OBJ) $(OBJB)
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@printf "\033[0;31m[ $(NAME) ] removed\n\n\033[0m"
+	@printf "\033[0;31m[ $(NAME) ] removed\n\033[0m"
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 16:13:59 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/20 12:24:36 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/22 14:29:05 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static char		*deal_with_particular_cases(char *output)
 	if (output[0] == '.')
 		output = ft_strjoin("0", output);
 	if (ft_strlen(output) == 0)
-		output = ft_strcpy(output, "0");
+		ft_strcpy(output, "0");
 	return (output);
 }
 
@@ -111,7 +111,9 @@ void			convert_float(va_list ap, t_lista *g)
 		decimal = deal_with_particular_cases(decimal);
 		g->inf = 0;
 	}
+	printf("decimalb = %p\n", decimal);
 	which(decimal, size, g);
+	printf("decimala = %p\n", decimal);
 	ft_memdel((void **)&binary);
 	ft_memdel((void **)&decimal);
 }

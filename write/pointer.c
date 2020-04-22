@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 15:05:30 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/20 01:11:51 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/20 20:37:49 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,5 @@ void			pointer(va_list ap, t_lista *g)
 		putzero(g->prec, length, g);
 		my_putstr(add, length, g);
 	}
+	free((void*)add);
 }

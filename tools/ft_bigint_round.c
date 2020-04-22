@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 10:54:41 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/19 16:49:50 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/22 13:52:37 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	*get_to_add(int n)
 
 	if (!(to_add = (char *)ft_memalloc((n + 4) * sizeof(char))))
 		return (NULL);
-	to_add = ft_strcpy(to_add, "0.1");
+	ft_strcpy(to_add, "0.1");
 	i = 2;
 	while (n != 0)
 	{

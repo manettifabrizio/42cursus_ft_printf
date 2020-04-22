@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/19 15:11:59 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/20 10:34:51 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/22 14:19:28 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ char			*zero_check(char *str, int len)
 
 	x = 0;
 	y = 0;
+	printf("str1 = %p\n", str);
 	if (str[0] == '.')
 		str = ft_strjoin("0", str);
+	printf("str2 = %p\n", str);
 	while (str[y] != '.' && str[y])
 		y++;
 	while (x <= (len - y))
@@ -31,10 +33,11 @@ char			*zero_check(char *str, int len)
 	}
 	str1[x] = '\0';
 	str = ft_strjoin(str, str1);
+	printf("str3 = %p\n", str);
 	return (str);
 }
 
-static char		*move_dot(char *dec, int sign, int x, int y)
+static void		move_dot(char *dec, int sign, int x, int y)
 {
 	y += x;
 	if (sign == 0)
@@ -55,7 +58,6 @@ static char		*move_dot(char *dec, int sign, int x, int y)
 		}
 		dec[x] = '.';
 	}
-	return (dec);
 }
 
 char			*re_dec_to_e(char *dec)
@@ -108,7 +110,7 @@ char			*dec_to_e(char *dec, int *sign, t_lista *g)
 			(dec[x + y - 1] == '.' && dec[x + y] == '\0'))
 			(*sign) = 2;
 	}
-	dec = move_dot(dec, (*sign), x, y);
+	move_dot(dec, (*sign), x, y);
 	set_expo(x, y, sign, g);
 	return (ft_bigint_trim(dec));
 }

@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:08:48 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/20 10:05:55 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/22 13:41:59 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ static void		flagbegin(t_lista *g)
 	g->hashtag = 0;
 	g->dot = 0;
 	g->prec = 0;
-	g->precm = 0;
+	// g->precm = 0;
 	g->width = 0;
 	g->minus = 0;
-	g->expo = ft_strdup("00");
+	g->expo = "00";
 	g->inf = 1;
 	g->conv = 'a';
 }
@@ -74,26 +74,34 @@ int				ft_printf(const char *prt, ...)
 {
 	int			i;
 	int			x;
+	char		*pr;
 	va_list		ap;
 	t_lista		g;
 
 	i = 0;
 	va_start(ap, prt);
 	g.written = 0;
-	while (prt[i])
+	// printf("pr1 = %p\n", prt);
+	pr = ft_strdup(prt);
+	// printf("pr2 = %p\n", pr);
+	while (pr[i])
 	{
-		if (prt[i] != '%')
-			print(prt, &i, &g);
+		if (pr[i] != '%')
+			print(pr, &i, &g);
 		else
 		{
+			// printf("pr3 = %p\n", pr);
 			flagbegin(&g);
-			x = setx(prt, i, &g);
-			flags(prt, &g, ap);
+			x = setx(pr, i, &g);
+			flags(pr, &g, ap);
+			// printf("pr4 = %p\n", pr);
 			decide(&g, ap);
-			prt = ft_substr(prt, x, ft_strlen(prt) - x);
+			my_substr(pr, x, ft_strlen(pr) - x);
+			// printf("pr7 = %p\n", pr);
 			i = 0;
 		}
 	}
 	va_end(ap);
+	free((void*)pr);
 	return (g.written);
 }

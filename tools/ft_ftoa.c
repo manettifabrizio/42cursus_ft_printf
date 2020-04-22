@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 16:31:56 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/20 12:23:00 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/22 13:52:37 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,11 +122,11 @@ static char		*infinity_or_nan(char *output)
 {
 	if (ft_strcmp(output, "0") == 0)
 	{
-		output = ft_strcpy(output, "inf");
+		ft_strcpy(output, "inf");
 	}
 	else
 	{
-		output = ft_strcpy(output, "nan");
+		ft_strcpy(output, "nan");
 	}
 	return (output);
 }
@@ -159,9 +159,9 @@ char			*ft_ftoa(double nbr, char *binary, size_t size)
 		return (NULL);
 	decimal = ft_mantissa(binary + 12, decimal, size);
 	if (nbr == 1)
-		decimal = ft_strcpy(decimal, "1.");
+		ft_strcpy(decimal, "1.");
 	if (nbr == 0)
-		decimal = ft_strcpy(decimal, "0.");
+		ft_strcpy(decimal, "0.");
 	else if (exponent == 1024)
 		decimal = infinity_or_nan(decimal);
 	else if (exponent != -1022)

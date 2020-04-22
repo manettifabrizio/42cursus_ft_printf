@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 18:13:16 by fmanetti          #+#    #+#              #
-#    Updated: 2020/04/20 10:29:33 by fmanetti         ###   ########.fr        #
+#    Updated: 2020/04/20 23:43:04 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,22 +54,22 @@ all: $(NAME)
 	@printf "[ ft_printf ] Compiling  .\r"
 
 $(NAME): $(OBJ)
-	@printf "\033[0;32m[ ft_printf ] Compiled Successfully\n\n\033[0m"
+	@printf "\033[0;32m[ ft_printf ] Compiled Successfully\n\033[0m"
 	@make -C libft/
 	@cp libft/libft.a ./$(NAME)
 	@ar rc $(NAME) $^
 	@ranlib $(NAME)
-	@printf "\033[0;32m[ $(NAME) ] Created Successfully\n\n\033[0m" $(SUCCESS)
+	@printf "\033[0;32m[ $(NAME) ] Created Successfully\n\033[0m" $(SUCCESS)
 
 clean:
 	@make clean -C libft/
 	@/bin/rm -f $(OBJ)
-	@printf "\033[0;31m\nObject files removed\n\n\033[0m"
+	@printf "\033[0;31m\nObject files removed\n\033[0m"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
 	@make fclean -C libft/
-	@printf "\033[0;31m[ $(NAME) ] removed\n\n\033[0m"
+	@printf "\033[0;31m[ $(NAME) ] removed\n\033[0m"
 
 re: fclean all
 

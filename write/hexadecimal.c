@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 17:49:47 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/20 01:12:25 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/20 20:37:38 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,5 @@ void			hexadecimal(va_list ap, t_lista *g)
 		hexa1(hexa, length, g);
 	else
 		hexa2(hexa, length, g);
+	free((void*)hexa);
 }

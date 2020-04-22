@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 10:23:31 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/20 10:29:37 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/22 13:35:42 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,3 +81,52 @@ char					*ft_conv_hexa2(unsigned int i)
 	str[j] = '\0';
 	return (str);
 }
+
+void    my_substr(char *s, unsigned int start, size_t len)
+{
+	size_t                  i;
+	unsigned int    x;
+
+	i = 0;
+	x = 0;
+	if (!s)
+			return ;
+	while (s[x])
+			x++;
+	// printf("start = %d x = %d\n", start, x);
+	while (i < len)
+	{
+			s[i] = s[start + i];
+			i++;
+	}
+	s[i] = '\0';
+}
+
+// void	my_strjoin(char const *s1, char *s2)
+// {
+// 	int		x;
+// 	int		i;
+// 	int		z;
+// 	char	*s3;
+
+// 	x = 0;
+// 	i = 0;
+// 	if (!s1 || !s2)
+// 		return (0);
+// 	z = ft_strlen(s1);
+	
+// 	if (!(tmp = (char*)malloc((z + ft_strlen(s2) + 1) * sizeof(char))))
+// 		return (NULL);
+// 	while (s1[i] != '\0')
+// 	{
+// 		s2[i] = s1[i];
+// 		i++;
+// 	}
+// 	while (s2[x] != '\0')
+// 	{
+// 		s2[x + i] = s2[x];
+// 		x++;
+// 	}
+// 	s3[x + i] = '\0';
+// 	return (s3);
+// }

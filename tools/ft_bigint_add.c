@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 19:08:23 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/19 16:49:53 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/22 13:52:37 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char			*set_to_add(char **dec, const char *add, size_t size)
 	len = ft_strlen(*dec) < ft_strlen(add) ? ft_strlen(add) : ft_strlen(*dec);
 	if (!(addcp = (char *)ft_memalloc((len * 2) * sizeof(char))))
 		return (NULL);
-	addcp = ft_strcpy(addcp, add);
+	ft_strcpy(addcp, add);
 	decindex = getindex(*dec, '.');
 	addindex = getindex(addcp, '.');
 	dotindex = decindex > addindex ? decindex : addindex;

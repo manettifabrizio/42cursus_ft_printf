@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:10:04 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/20 12:23:17 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/22 13:11:41 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ typedef	struct		s_lista
 int					ft_printf(const char *prt, ...);
 void				choice(char c, t_lista *g);
 
-void				flags(const char *prt, t_lista *g, va_list ap);
-char				*numbersandstar(char *prt, int x, t_lista *g, va_list ap);
+void				flags(char *prt, t_lista *g, va_list ap);
+void				numbersandstar(char *prt, int x, t_lista *g, va_list ap);
 
 void				integer(va_list ap, t_lista *g);
 void				uinteger(va_list ap, t_lista *g);
@@ -137,6 +137,7 @@ int					widthu(unsigned int x, t_lista *g);
 void				which(char *decimal, size_t size, t_lista *g);
 char				*ft_conv_hexa(long y);
 char				*ft_conv_hexa2(unsigned int i);
+void				my_substr(char *s, unsigned int start, size_t len);
 
 void				convert_float(va_list ap, t_lista *g);
 char				*ft_ftoa(double nbr, char *binary, size_t size);
