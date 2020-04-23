@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmanetti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 16:07:37 by fmanetti          #+#    #+#             */
-/*   Updated: 2019/11/21 15:27:19 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/23 18:11:56 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {

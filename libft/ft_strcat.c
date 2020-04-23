@@ -6,11 +6,11 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 21:01:19 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/10 21:01:21 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/23 18:11:56 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 char	*ft_strcat(char *s1, const char *s2)
 {

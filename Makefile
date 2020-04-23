@@ -6,40 +6,41 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 18:13:16 by fmanetti          #+#    #+#              #
-#    Updated: 2020/04/20 23:43:04 by fmanetti         ###   ########.fr        #
+#    Updated: 2020/04/23 18:54:01 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = 		libftprintf.a
 
-SOURCE = 	ft_printf.c \
-			write/integer.c \
-			write/uinteger.c \
-			write/character.c \
-			write/string.c \
-			write/pointer.c \
-			write/hexadecimal.c \
-			write/percent.c \
-			write/number.c \
-			write/float_f.c \
-			write/float_e.c \
-			flags/flags.c \
-			flags/flagstools.c \
-			tools/convert_float.c \
-			tools/dec_to_e.c \
-			tools/tools.c \
-			tools/tools1.c \
-			tools/tools2.c \
-			tools/tools3.c \
-			tools/ft_ftoa.c \
-			tools/ft_bigint_add.c \
-			tools/ft_bigint_trim.c \
-			tools/ft_bigint_shift_right.c \
-			tools/ft_bigint_divide_by_two.c \
-			tools/ft_bigint_multiply_by_two.c \
-			tools/ft_bigint_round.c \
-			tools/my_putnbr.c \
-			tools/my_putstr.c 
+SOURCE = 	src/ft_printf.c \
+			src/print_conv/integer.c \
+			src/print_conv/uinteger.c \
+			src/print_conv/character.c \
+			src/print_conv/string.c \
+			src/print_conv/pointer.c \
+			src/print_conv/hexadecimal.c \
+			src/print_conv/percent.c \
+			src/print_conv/number.c \
+			src/print_conv/float_f.c \
+			src/print_conv/float_e.c \
+			src/flags/flags.c \
+			src/flags/flagstools.c \
+			src/tools/convert_float.c \
+			src/tools/dec_to_e.c \
+			src/tools/tools.c \
+			src/tools/tools1.c \
+			src/tools/tools2.c \
+			src/tools/tools3.c \
+			src/tools/ft_ftoa.c \
+			src/tools/ft_bigint_add.c \
+			src/tools/ft_bigint_trim.c \
+			src/tools/ft_bigint_shift_right.c \
+			src/tools/ft_bigint_divide_by_two.c \
+			src/tools/ft_bigint_multiply_by_two.c \
+			src/tools/ft_bigint_round.c \
+			src/tools/my_putnbr.c \
+			src/tools/my_putstr.c \
+			src/tools/my_strjoin.c
 
 OBJ			= $(SOURCE:%.c=%.o) 
 
@@ -64,7 +65,7 @@ $(NAME): $(OBJ)
 clean:
 	@make clean -C libft/
 	@/bin/rm -f $(OBJ)
-	@printf "\033[0;31m\nObject files removed\n\033[0m"
+	@printf "\033[0;31mObject files removed\n\033[0m"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
