@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 18:13:16 by fmanetti          #+#    #+#              #
-#    Updated: 2020/04/24 11:31:50 by fmanetti         ###   ########.fr        #
+#    Updated: 2020/04/24 12:05:39 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ all: $(NAME)
 
 %.o: %.c
 	@printf "[ ft_printf ] Compiling.  \r"
-	@clang $(FLAGS) -c -g $< -o $@
+	@gcc $(FLAGS) -c -g $< -o $@
 	@printf "[ ft_printf ] Compiling . \r"
 	@printf "[ ft_printf ] Compiling  .\r"
 
