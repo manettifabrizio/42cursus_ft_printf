@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:10:04 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/23 18:08:55 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/24 12:45:38 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFTPRINTF_H
 
 # include <stdarg.h>
-# include "libft.h"
+# include "../libft/include/libft.h"
 # define P0 "1"
 # define P1 "0.5"
 # define P2 "0.25"
