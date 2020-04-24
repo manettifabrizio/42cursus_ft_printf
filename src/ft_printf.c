@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:08:48 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/23 18:08:12 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/24 11:29:10 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ void			choice(char c, t_lista *g)
 
 static int		decide(t_lista *g, va_list ap)
 {
-	int		x;
-
-	x = 0;
 	if (g->conv == 'd' || g->conv == 'i')
 		integer(ap, g);
 	else if (g->conv == 'u')
