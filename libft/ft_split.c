@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 17:50:16 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/23 18:11:56 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/04/24 12:11:21 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,8 @@ static char		*fill_string(char const *s, char c, char *t, int y)
 	int		x;
 	int		z;
 	int		a;
-	int		e;
 
 	x = y;
-	e = y;
 	a = y;
 	z = 0;
 	while (s[x] == c && s[x] != '\0')
