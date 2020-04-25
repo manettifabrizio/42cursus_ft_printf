@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 18:13:16 by fmanetti          #+#    #+#              #
-#    Updated: 2020/04/24 12:21:59 by fmanetti         ###   ########.fr        #
+#    Updated: 2020/04/25 16:33:10 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,8 @@ $(NAME): $(OBJ)
 	@ranlib $(NAME)
 	@printf "\033[0;32m[ $(NAME) ] Created Successfully\n\033[0m" $(SUCCESS)
 
+bonus: $(NAME)
+	
 clean:
 	@make clean -C libft/
 	@/bin/rm -f $(OBJ)
