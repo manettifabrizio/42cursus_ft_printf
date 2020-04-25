@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 18:13:16 by fmanetti          #+#    #+#              #
-#    Updated: 2020/04/25 16:33:10 by fmanetti         ###   ########.fr        #
+#    Updated: 2020/04/25 16:50:03 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,24 +55,25 @@ all: $(NAME)
 	@printf "[ ft_printf ] Compiling  .\r"
 
 $(NAME): $(OBJ)
-	@printf "\033[0;32m[ ft_printf ] Compiled Successfully\n\033[0m"
+	@printf "[ ft_printf ] Compiled \033[0;32mSuccessfully\n\033[0m"
 	@make -C libft/
 	@cp libft/libft.a ./$(NAME)
 	@ar rc $(NAME) $^
 	@ranlib $(NAME)
-	@printf "\033[0;32m[ $(NAME) ] Created Successfully\n\033[0m" $(SUCCESS)
+	@printf "[ $(NAME) ] Created \033[0;32mSuccessfully\n\033[0m" $(SUCCESS)
 
 bonus: $(NAME)
+	@printf "[ $(NAME) + bonus] Created \033[0;32mSuccessfully\n\033[0m" $(SUCCESS)
 	
 clean:
 	@make clean -C libft/
 	@/bin/rm -f $(OBJ)
-	@printf "\033[0;31mObject files removed\n\033[0m"
+	@printf "Object files \033[0;31mremoved\n\033[0m"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
 	@make fclean -C libft/
-	@printf "\033[0;31m[ $(NAME) ] removed\n\033[0m"
+	@printf "[ $(NAME) ] \033[0;31mremoved\n\033[0m"
 
 re: fclean all
 
