@@ -6,7 +6,7 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 18:13:16 by fmanetti          #+#    #+#              #
-#    Updated: 2020/04/25 16:50:03 by fmanetti         ###   ########.fr        #
+#    Updated: 2020/05/21 01:09:31 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,8 +56,8 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@printf "[ ft_printf ] Compiled \033[0;32mSuccessfully\n\033[0m"
-	@make -C libft/
-	@cp libft/libft.a ./$(NAME)
+	@make -C include/libft/
+	@cp include/libft/libft.a ./$(NAME)
 	@ar rc $(NAME) $^
 	@ranlib $(NAME)
 	@printf "[ $(NAME) ] Created \033[0;32mSuccessfully\n\033[0m" $(SUCCESS)
@@ -66,13 +66,13 @@ bonus: $(NAME)
 	@printf "[ $(NAME) + bonus] Created \033[0;32mSuccessfully\n\033[0m" $(SUCCESS)
 	
 clean:
-	@make clean -C libft/
+	@make clean -C include/libft/
 	@/bin/rm -f $(OBJ)
 	@printf "Object files \033[0;31mremoved\n\033[0m"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@make fclean -C libft/
+	@make fclean -C include/libft/
 	@printf "[ $(NAME) ] \033[0;31mremoved\n\033[0m"
 
 re: fclean all
