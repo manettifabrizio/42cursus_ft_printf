@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:10:04 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/05/21 01:06:21 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/05/21 08:06:41 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ void				float_e(char *decimal, size_t size, t_lista *g);
 
 void				putspace(int x, int y, t_lista *g);
 void				putzero(int x, int y, t_lista *g);
-void				my_putnbrx(unsigned int nb, t_lista *g);
 void				puthexa(char *str, int y, t_lista *g);
 void				putstrm(char *str, int prec, int x, t_lista *g);
 
@@ -137,9 +136,6 @@ int					widthu(unsigned int x, t_lista *g);
 void				which(char *decimal, size_t size, t_lista *g);
 char				*ft_conv_hexa(long y);
 char				*ft_conv_hexa2(unsigned int i);
-void				my_substr(char *s, unsigned int start, size_t len);
-char				*my_strjoin(char *s1, char *s2);
-char				*my_strjoin_r(char *s1, char *s2);
 
 void				convert_float(va_list ap, t_lista *g);
 char				*ft_ftoa(double nbr, char *binary, size_t size);
@@ -157,6 +153,10 @@ char				*re_dec_to_e(char *dec);
 char				*zero_check(char *str, int len);
 
 void				my_putnbr(int nb, t_lista *g);
+void				my_putnbrx(unsigned int nb, t_lista *g);
 void				my_putstr(char *str, int x, t_lista *g);
+void				my_substr(char *s, unsigned int start, size_t len);
+char				*my_strjoin(char *s1, char *s2);
+char				*my_strjoin_r(char *s1, char *s2);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 10:23:31 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/23 18:49:59 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/05/21 08:12:08 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,23 +80,4 @@ char					*ft_conv_hexa2(unsigned int i)
 	}
 	str[j] = '\0';
 	return (str);
-}
-
-void					my_substr(char *s, unsigned int start, size_t len)
-{
-	size_t			i;
-	unsigned int	x;
-
-	i = 0;
-	x = 0;
-	if (!s)
-		return ;
-	while (s[x])
-		x++;
-	while (i < len)
-	{
-		s[i] = s[start + i];
-		i++;
-	}
-	s[i] = '\0';
 }

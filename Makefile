@@ -6,41 +6,43 @@
 #    By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/12 18:13:16 by fmanetti          #+#    #+#              #
-#    Updated: 2020/05/21 01:09:31 by fmanetti         ###   ########.fr        #
+#    Updated: 2020/05/21 08:13:02 by fmanetti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = 		libftprintf.a
 
-SOURCE = 	src/ft_printf.c \
-			src/print_conv/integer.c \
-			src/print_conv/uinteger.c \
-			src/print_conv/character.c \
-			src/print_conv/string.c \
-			src/print_conv/pointer.c \
-			src/print_conv/hexadecimal.c \
-			src/print_conv/percent.c \
-			src/print_conv/number.c \
-			src/print_conv/float_f.c \
-			src/print_conv/float_e.c \
-			src/flags/flags.c \
-			src/flags/flagstools.c \
-			src/tools/convert_float.c \
-			src/tools/dec_to_e.c \
-			src/tools/tools.c \
-			src/tools/tools1.c \
-			src/tools/tools2.c \
-			src/tools/tools3.c \
-			src/tools/ft_ftoa.c \
-			src/tools/ft_bigint_add.c \
-			src/tools/ft_bigint_trim.c \
-			src/tools/ft_bigint_shift_right.c \
-			src/tools/ft_bigint_divide_by_two.c \
-			src/tools/ft_bigint_multiply_by_two.c \
-			src/tools/ft_bigint_round.c \
-			src/tools/my_putnbr.c \
-			src/tools/my_putstr.c \
-			src/tools/my_strjoin.c
+SOURCE = 	srcs/ft_printf.c \
+			srcs/print_conv/integer.c \
+			srcs/print_conv/uinteger.c \
+			srcs/print_conv/character.c \
+			srcs/print_conv/string.c \
+			srcs/print_conv/pointer.c \
+			srcs/print_conv/hexadecimal.c \
+			srcs/print_conv/percent.c \
+			srcs/print_conv/number.c \
+			srcs/print_conv/float_f.c \
+			srcs/print_conv/float_e.c \
+			srcs/flags/flags.c \
+			srcs/flags/flagstools.c \
+			srcs/tools/convert_float.c \
+			srcs/tools/dec_to_e.c \
+			srcs/tools/tools.c \
+			srcs/tools/tools1.c \
+			srcs/tools/tools2.c \
+			srcs/tools/tools3.c \
+			srcs/tools/ft_ftoa.c \
+			srcs/tools/ft_bigint_add.c \
+			srcs/tools/ft_bigint_trim.c \
+			srcs/tools/ft_bigint_shift_right.c \
+			srcs/tools/ft_bigint_divide_by_two.c \
+			srcs/tools/ft_bigint_multiply_by_two.c \
+			srcs/tools/ft_bigint_round.c \
+			srcs/tools/my_putnbr.c \
+			srcs/tools/my_putnbrx.c \
+			srcs/tools/my_putstr.c \
+			srcs/tools/my_substr.c \
+			srcs/tools/my_strjoin.c
 
 OBJ			= $(SOURCE:%.c=%.o) 
 

@@ -6,7 +6,7 @@
 /*   By: fmanetti <fmanetti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 16:30:52 by fmanetti          #+#    #+#             */
-/*   Updated: 2020/04/23 18:07:41 by fmanetti         ###   ########.fr       */
+/*   Updated: 2020/05/21 08:07:17 by fmanetti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,6 @@ void	putzero(int x, int y, t_lista *g)
 		g->written++;
 		x--;
 	}
-}
-
-void	my_putnbrx(unsigned int nb, t_lista *g)
-{
-	if (nb == 0 && g->prec == 0 && g->dot == 1)
-		return ;
-	if (nb > 9)
-		my_putnbrx(nb / 10, g);
-	ft_putchar(nb % 10 + '0');
 }
 
 void	puthexa(char *str, int y, t_lista *g)
